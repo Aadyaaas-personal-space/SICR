@@ -1,0 +1,746 @@
+import { useEffect, useMemo, useState } from "react";
+import {
+    getIdeas,
+    createIdea,
+    updateIdea,
+    deleteIdea,
+} from "../../services/ideasService";
+import { getLoggedInIdentity } from "../../utils/authIdentity";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Footer from "../../components/footer/Footer";
+import "./ideas.css";
+
+const CATEGORIES = [
+    "All Ideas",
+    "Technology",
+    "Education",
+    "Sustainability",
+    "Healthcare",
+    "Finance",
+];
+
+const EMPTY_FORM = {
+    title: "",
+    description: "",
+    category: "Technology",
+    tags: "",
+};
+
+const ECOSYSTEM_NAMES = {
+    STARTUP: "Startup",
+    INVESTOR: "Investor / Funder",
+    MENTOR: "Mentor",
+    CORPORATE: "Corporate",
+    PARTNERSHIP: "Partnership",
+    SPONSORSHIP: "Sponsorship",
+    TBRIDGE: "T-Bridge",
+};
+
+function getIdeaId(idea) {
+    return String(idea?._id || idea?.id || "");
+}
+
+function getCreatorName(idea) {
+    if (idea?.creatorName?.trim()) return idea.creatorName.trim();
+    return ECOSYSTEM_NAMES[idea?.creatorType] || "SICR Member";
+}
+
+function getTags(value) {
+    if (Array.isArray(value)) return value;
+    if (typeof value === "string") {
+        return value.split(",").map((tag) => tag.trim()).filter(Boolean);
+    }
+    return [];
+}
+
+function getIdentityName(identity) {
+    const payload = identity?.payload || {};
+    const firstName = payload.firstName || payload.firstname || "";
+    const lastName = payload.lastName || payload.lastname || "";
+    const fullName =
+        payload.name ||
+        payload.fullName ||
+        payload.organizationName ||
+        `${firstName} ${lastName}`.trim();
+
+    return fullName || "";
+}
+
+function Ideas() {
+    const identity = getLoggedInIdentity();
+
+    const [ideas, setIdeas] = useState([]);
+    const [search, setSearch] = useState("");
+    const [category, setCategory] = useState("All Ideas");
+    const [sortBy, setSortBy] = useState("Newest");
+
+    const [showForm, setShowForm] = useState(false);
+    const [editingId, setEditingId] = useState(null);
+    const [formData, setFormData] = useState({ ...EMPTY_FORM });
+
+    const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
+    const [deletingId, setDeletingId] = useState(null);
+    const [pageError, setPageError] = useState("");
+    const [formError, setFormError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+
+    const loadIdeas = async () => {
+        setLoading(true);
+        setPageError("");
+
+        try {
+            const data = await getIdeas();
+            setIdeas(Array.isArray(data.ideas) ? data.ideas : []);
+        } catch (error) {
+            console.error("Load SICR ideas error:", error);
+            setPageError(error.message || "Unable to load ideas.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        loadIdeas();
+    }, []);
+
+    const isOwner = (idea) =>
+        Boolean(
+            identity &&
+            idea &&
+            String(idea.creatorId) === String(identity.id) &&
+            String(idea.creatorType).toUpperCase() ===
+                String(identity.type).toUpperCase()
+        );
+
+    const myIdeasCount = ideas.filter(isOwner).length;
+
+    const filteredIdeas = useMemo(() => {
+        const query = search.trim().toLowerCase();
+
+        let result = ideas.filter((idea) => {
+            const tags = getTags(idea.tags);
+
+            const searchableText = [
+                idea.title,
+                idea.description,
+                idea.category,
+                getCreatorName(idea),
+                idea.creatorType,
+                ...tags,
+            ]
+                .filter(Boolean)
+                .join(" ")
+                .toLowerCase();
+
+            const matchesSearch =
+                !query || searchableText.includes(query);
+
+            const matchesCategory =
+                category === "All Ideas" ||
+                String(idea.category || "").toLowerCase() ===
+                    category.toLowerCase();
+
+            return matchesSearch && matchesCategory;
+        });
+
+        if (sortBy === "Newest" || sortBy === "Oldest") {
+            result = [...result].sort((a, b) => {
+                const dateA = new Date(a.createdAt || 0).getTime();
+                const dateB = new Date(b.createdAt || 0).getTime();
+
+                return sortBy === "Newest"
+                    ? dateB - dateA
+                    : dateA - dateB;
+            });
+        } else if (sortBy === "My Ideas") {
+            result = result.filter(isOwner);
+        } else if (sortBy === "Title A–Z") {
+            result = [...result].sort((a, b) =>
+                String(a.title || "").localeCompare(String(b.title || ""))
+            );
+        } else if (sortBy === "Title Z–A") {
+            result = [...result].sort((a, b) =>
+                String(b.title || "").localeCompare(String(a.title || ""))
+            );
+        }
+
+        return result;
+    }, [ideas, search, category, sortBy, identity]);
+
+    const resetForm = () => {
+        setFormData({ ...EMPTY_FORM });
+        setEditingId(null);
+        setFormError("");
+        setShowForm(false);
+    };
+
+    const openCreateForm = () => {
+        setFormData({ ...EMPTY_FORM });
+        setEditingId(null);
+        setFormError("");
+        setSuccessMessage("");
+        setShowForm(true);
+    };
+
+    const openEditForm = (idea) => {
+        if (!isOwner(idea)) {
+            setPageError("You can only edit ideas you created.");
+            return;
+        }
+
+        setFormData({
+            title: idea.title || "",
+            description: idea.description || "",
+            category: idea.category || "Technology",
+            tags: getTags(idea.tags).join(", "),
+        });
+
+        setEditingId(getIdeaId(idea));
+        setFormError("");
+        setSuccessMessage("");
+        setShowForm(true);
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setFormError("");
+        setPageError("");
+        setSuccessMessage("");
+
+        const title = formData.title.trim();
+        const description = formData.description.trim();
+
+        if (!title || !description) {
+            setFormError("Please enter both a title and description.");
+            return;
+        }
+
+        const tags = formData.tags
+            .split(",")
+            .map((tag) => tag.trim().replace(/^#/, ""))
+            .filter(Boolean)
+            .slice(0, 5);
+
+        const payload = {
+            title,
+            description,
+            category: formData.category,
+            tags,
+            creatorName: getIdentityName(identity),
+        };
+
+        setSaving(true);
+
+        try {
+            if (editingId) {
+                const data = await updateIdea(editingId, payload);
+
+                setIdeas((current) =>
+                    current.map((idea) =>
+                        getIdeaId(idea) === editingId ? data.idea : idea
+                    )
+                );
+
+                setSuccessMessage("Your idea was updated successfully.");
+            } else {
+                const data = await createIdea(payload);
+
+                setIdeas((current) => [data.idea, ...current]);
+                setSearch("");
+                setCategory("All Ideas");
+                setSortBy("Newest");
+                setSuccessMessage("Your idea was published successfully.");
+            }
+
+            setFormData({ ...EMPTY_FORM });
+            setEditingId(null);
+            setShowForm(false);
+        } catch (error) {
+            console.error("Save SICR idea error:", error);
+            setFormError(error.message || "Unable to save your idea.");
+        } finally {
+            setSaving(false);
+        }
+    };
+
+    const handleDelete = async (idea) => {
+        if (!isOwner(idea)) {
+            setPageError("You can only delete ideas you created.");
+            return;
+        }
+
+        const ideaId = getIdeaId(idea);
+
+        if (!window.confirm(`Delete "${idea.title}" permanently?`)) {
+            return;
+        }
+
+        setDeletingId(ideaId);
+        setPageError("");
+        setSuccessMessage("");
+
+        try {
+            await deleteIdea(ideaId);
+
+            setIdeas((current) =>
+                current.filter((item) => getIdeaId(item) !== ideaId)
+            );
+
+            if (editingId === ideaId) resetForm();
+
+            setSuccessMessage("Your idea was deleted successfully.");
+        } catch (error) {
+            console.error("Delete SICR idea error:", error);
+            setPageError(error.message || "Unable to delete this idea.");
+        } finally {
+            setDeletingId(null);
+        }
+    };
+
+    return (
+        <div className="ideas-app-layout">
+            <Sidebar />
+            <div className="ideas-main-shell">
+                <main className="ideas-page">
+            <section className="ideas-hero">
+                <div className="ideas-hero-content">
+                    <span className="ideas-eyebrow">SICR COMMUNITY</span>
+
+                    <h1>Great ideas start here.</h1>
+
+                    <p>
+                        Discover opportunities, share your thinking and
+                        collaborate with founders, investors and innovators.
+                    </p>
+
+                    <div className="ideas-hero-actions">
+                        <button
+                            type="button"
+                            className="ideas-primary-btn"
+                            onClick={openCreateForm}
+                        >
+                            + Share an idea
+                        </button>
+
+                        <span className="ideas-community-note">
+                            Think. Share. Build.
+                        </span>
+                    </div>
+                </div>
+
+                <div className="ideas-hero-art" aria-hidden="true">
+                    <div className="ideas-orbit ideas-orbit-one" />
+                    <div className="ideas-orbit ideas-orbit-two" />
+                    <div className="ideas-bulb">✦</div>
+                    <span className="ideas-art-dot dot-one">+</span>
+                    <span className="ideas-art-dot dot-two">✧</span>
+                    <span className="ideas-art-dot dot-three">•</span>
+                </div>
+            </section>
+
+            <section className="ideas-stats">
+                <div className="ideas-stat-card">
+                    <span className="ideas-stat-icon">✧</span>
+                    <div>
+                        <strong>{ideas.length}</strong>
+                        <span>Community ideas</span>
+                    </div>
+                </div>
+
+                <div className="ideas-stat-card">
+                    <span className="ideas-stat-icon">◈</span>
+                    <div>
+                        <strong>{myIdeasCount}</strong>
+                        <span>Ideas you created</span>
+                    </div>
+                </div>
+
+                <div className="ideas-stat-card">
+                    <span className="ideas-stat-icon">◎</span>
+                    <div>
+                        <strong>
+                            {new Set(
+                                ideas.map((idea) => idea.category).filter(Boolean)
+                            ).size}
+                        </strong>
+                        <span>Focus categories</span>
+                    </div>
+                </div>
+            </section>
+
+            {pageError && (
+                <div className="ideas-empty-state" role="alert">
+                    <h3>Something went wrong</h3>
+                    <p>{pageError}</p>
+                    <button
+                        type="button"
+                        className="ideas-secondary-btn"
+                        onClick={loadIdeas}
+                    >
+                        Try again
+                    </button>
+                </div>
+            )}
+
+            {successMessage && (
+                <div className="ideas-empty-state" role="status">
+                    <p>{successMessage}</p>
+                    <button
+                        type="button"
+                        className="ideas-secondary-btn"
+                        onClick={() => setSuccessMessage("")}
+                    >
+                        Dismiss
+                    </button>
+                </div>
+            )}
+
+            {showForm && (
+                <section className="ideas-form-card">
+                    <div className="ideas-form-heading">
+                        <div>
+                            <span className="ideas-eyebrow">
+                                YOUR NEXT BIG THING
+                            </span>
+                            <h2>{editingId ? "Edit your idea" : "Share your idea"}</h2>
+                            <p>
+                                Describe the problem and the solution you
+                                want to explore.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            className="ideas-close-btn"
+                            onClick={resetForm}
+                            aria-label="Close idea form"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    <form onSubmit={handleSubmit}>
+                        {formError && (
+                            <p role="alert" className="ideas-form-error">
+                                {formError}
+                            </p>
+                        )}
+
+                        <label htmlFor="idea-title">Idea title *</label>
+                        <input
+                            id="idea-title"
+                            type="text"
+                            maxLength={100}
+                            placeholder="e.g. AI assistant for small businesses"
+                            value={formData.title}
+                            onChange={(event) =>
+                                setFormData({
+                                    ...formData,
+                                    title: event.target.value,
+                                })
+                            }
+                            required
+                        />
+
+                        <label htmlFor="idea-description">Description *</label>
+                        <textarea
+                            id="idea-description"
+                            rows={4}
+                            maxLength={3000}
+                            placeholder="What problem does your idea solve?"
+                            value={formData.description}
+                            onChange={(event) =>
+                                setFormData({
+                                    ...formData,
+                                    description: event.target.value,
+                                })
+                            }
+                            required
+                        />
+
+                        <div className="ideas-form-grid">
+                            <div>
+                                <label htmlFor="idea-category">Category</label>
+                                <select
+                                    id="idea-category"
+                                    value={formData.category}
+                                    onChange={(event) =>
+                                        setFormData({
+                                            ...formData,
+                                            category: event.target.value,
+                                        })
+                                    }
+                                >
+                                    {CATEGORIES.filter(
+                                        (item) => item !== "All Ideas"
+                                    ).map((item) => (
+                                        <option key={item} value={item}>
+                                            {item}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label htmlFor="idea-tags">
+                                    Tags (comma-separated, up to 5)
+                                </label>
+                                <input
+                                    id="idea-tags"
+                                    type="text"
+                                    placeholder="AI, SaaS, Education"
+                                    value={formData.tags}
+                                    onChange={(event) =>
+                                        setFormData({
+                                            ...formData,
+                                            tags: event.target.value,
+                                        })
+                                    }
+                                />
+                            </div>
+                        </div>
+
+                        <button
+                            className="ideas-primary-btn"
+                            type="submit"
+                            disabled={saving}
+                        >
+                            {saving
+                                ? "Saving..."
+                                : editingId
+                                    ? "Save changes"
+                                    : "Publish idea"}
+                        </button>
+
+                        <button
+                            className="ideas-secondary-btn"
+                            type="button"
+                            onClick={resetForm}
+                            disabled={saving}
+                        >
+                            Cancel
+                        </button>
+                    </form>
+                </section>
+            )}
+
+            <section className="ideas-discover">
+                <div className="ideas-section-heading">
+                    <div>
+                        <span className="ideas-eyebrow">IDEA EXPLORER</span>
+                        <h2>Explore ideas</h2>
+                        <p>
+                            Find inspiration or discover your next collaboration.
+                        </p>
+                    </div>
+
+                    <span className="ideas-results-count">
+                        {filteredIdeas.length}{" "}
+                        {filteredIdeas.length === 1 ? "idea" : "ideas"}
+                    </span>
+                </div>
+
+                <div className="ideas-search-row">
+                    <div className="ideas-search-box">
+                        <span aria-hidden="true">⌕</span>
+                        <input
+                            type="search"
+                            value={search}
+                            onChange={(event) => setSearch(event.target.value)}
+                            placeholder="Search ideas, topics or creators..."
+                            aria-label="Search ideas"
+                        />
+                    </div>
+
+                    <select
+                        className="ideas-sort-select"
+                        value={sortBy}
+                        onChange={(event) => setSortBy(event.target.value)}
+                        aria-label="Sort ideas"
+                    >
+                        <option value="Newest">Newest</option>
+                        <option value="Oldest">Oldest</option>
+                        <option value="Title A–Z">Title A–Z</option>
+                        <option value="Title Z–A">Title Z–A</option>
+                        <option value="My Ideas">My Ideas</option>
+                    </select>
+                </div>
+
+                <div className="ideas-category-list">
+                    {CATEGORIES.map((item) => (
+                        <button
+                            type="button"
+                            key={item}
+                            className={`ideas-category-chip ${
+                                category === item ? "selected" : ""
+                            }`}
+                            onClick={() => setCategory(item)}
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </div>
+
+                {loading ? (
+                    <div className="ideas-empty-state">
+                        <h3>Loading ideas...</h3>
+                        <p>Connecting to the SICR Ideas service.</p>
+                    </div>
+                ) : filteredIdeas.length > 0 ? (
+                    <div className="ideas-grid">
+                        {filteredIdeas.map((idea) => {
+                            const owner = isOwner(idea);
+                            const tags = getTags(idea.tags);
+                            const creatorName = getCreatorName(idea);
+                            const creatorType =
+                                ECOSYSTEM_NAMES[idea.creatorType] ||
+                                "SICR Member";
+
+                            return (
+                                <article
+                                    className="idea-card"
+                                    key={getIdeaId(idea)}
+                                >
+                                    <div className="idea-card-top">
+                                        <span className="idea-category-label">
+                                            {idea.category || "Technology"}
+                                        </span>
+
+                                        {owner && (
+                                            <span className="idea-trending">
+                                                Your idea
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <h3>{idea.title}</h3>
+
+                                    <p className="idea-description">
+                                        {idea.description}
+                                    </p>
+
+                                    <div className="idea-tags">
+                                        {tags.map((tag, index) => (
+                                            <span key={`${tag}-${index}`}>
+                                                #{tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <div className="idea-author">
+                                        <div className="idea-avatar">
+                                            {creatorName
+                                                .split(/\s+/)
+                                                .filter(Boolean)
+                                                .map((part) => part[0])
+                                                .join("")
+                                                .slice(0, 2)
+                                                .toUpperCase()}
+                                        </div>
+
+                                        <div className="idea-author-info">
+                                            <strong>{creatorName}</strong>
+                                            <span>{creatorType} community</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="idea-card-footer">
+                                        <span className="idea-comment-count">
+                                            {idea.createdAt
+                                                ? new Date(
+                                                      idea.createdAt
+                                                  ).toLocaleDateString()
+                                                : "Saved idea"}
+                                        </span>
+
+                                        {owner && (
+                                            <>
+                                                <button
+                                                    type="button"
+                                                    className="idea-view-btn"
+                                                    onClick={() =>
+                                                        openEditForm(idea)
+                                                    }
+                                                >
+                                                    Edit
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    className="idea-view-btn"
+                                                    disabled={
+                                                        deletingId ===
+                                                        getIdeaId(idea)
+                                                    }
+                                                    onClick={() =>
+                                                        handleDelete(idea)
+                                                    }
+                                                >
+                                                    {deletingId ===
+                                                    getIdeaId(idea)
+                                                        ? "Deleting..."
+                                                        : "Delete"}
+                                                </button>
+                                            </>
+                                        )}
+                                    </div>
+                                </article>
+                            );
+                        })}
+                    </div>
+                ) : (
+                    <div className="ideas-empty-state">
+                        <span>⌕</span>
+                        <h3>No ideas found</h3>
+                        <p>
+                            {ideas.length === 0
+                                ? "Be the first to share an idea with the SICR community."
+                                : "Try another search term or category."}
+                        </p>
+                        <button
+                            type="button"
+                            className="ideas-secondary-btn"
+                            onClick={() => {
+                                setSearch("");
+                                setCategory("All Ideas");
+                                setSortBy("Newest");
+                            }}
+                        >
+                            Clear filters
+                        </button>
+                    </div>
+                )}
+            </section>
+
+            <section className="ideas-bottom-banner">
+                <div>
+                    <span className="ideas-eyebrow">HAVE AN IDEA?</span>
+                    <h2>Your next big idea could start a movement.</h2>
+                    <p>
+                        Share it with the SICR community and find people who
+                        can help you bring it to life.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    className="ideas-primary-btn"
+                    onClick={() => {
+                        openCreateForm();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                >
+                    + Create an idea
+                </button>
+            </section>
+                </main>
+                <Footer />
+            </div>
+        </div>
+    );
+}
+
+export default Ideas;

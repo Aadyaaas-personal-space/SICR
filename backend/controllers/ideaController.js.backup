@@ -1,0 +1,292 @@
+const mongoose = require("mongoose");
+const Idea = require("../models/Idea");
+
+const isOwner = (idea, identity) => {
+    return Boolean(
+        idea &&
+        identity &&
+        String(idea.creatorId) === String(identity.id) &&
+        String(idea.creatorType).toUpperCase() ===
+        String(identity.type).toUpperCase()
+    );
+};
+
+const validObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
+
+const createIdea = async (req, res) => {
+    try {
+        const { title, description, category, tags, creatorName } = req.body;
+
+        if (
+            typeof title !== "string" ||
+            !title.trim() ||
+            typeof description !== "string" ||
+            !description.trim()
+        ) {
+            return res.status(400).json({
+                success: false,
+                message: "Idea title and description are required.",
+            });
+        }
+
+        const cleanTags = Array.isArray(tags)
+            ? tags
+            : typeof tags === "string"
+                ? tags.split(",")
+                : [];
+
+        const idea = await Idea.create({
+            creatorType: req.connectionIdentity.type,
+            creatorId: req.connectionIdentity.id,
+            creatorName:
+                typeof creatorName === "string"
+                    ? creatorName.trim().slice(0, 100)
+                    : "",
+            title: title.trim(),
+            description: description.trim(),
+            category:
+                typeof category === "string" && category.trim()
+                    ? category.trim().slice(0, 60)
+                    : "Technology",
+            tags: cleanTags
+                .filter((tag) => typeof tag === "string")
+                .map((tag) => tag.trim().replace(/^#/, ""))
+                .filter(Boolean)
+                .slice(0, 5),
+        });
+
+        return res.status(201).json({
+            success: true,
+            message: "Idea published successfully.",
+            idea,
+        });
+    } catch (error) {
+        console.error("Create idea error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Unable to publish idea.",
+        });
+    }
+};
+
+const getIdeas = async (req, res) => {
+    try {
+        const { search = "", category = "", mine = "" } = req.query;
+        const filter = {};
+
+        if (String(mine).toLowerCase() === "true") {
+            filter.creatorId = req.connectionIdentity.id;
+            filter.creatorType = req.connectionIdentity.type;
+        }
+
+        if (typeof category === "string" &&
+            category.trim() &&
+            category.trim().toLowerCase() !== "all ideas") {
+            filter.category = new RegExp(
+                "^" + category.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$",
+                "i"
+            );
+        }
+
+        if (typeof search === "string" && search.trim()) {
+            const escapedSearch = search.trim().replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            );
+
+            const searchRegex = new RegExp(escapedSearch, "i");
+
+            filter.$or = [
+                { title: searchRegex },
+                { description: searchRegex },
+                { category: searchRegex },
+                { tags: searchRegex },
+                { creatorName: searchRegex },
+            ];
+        }
+
+        const ideas = await Idea.find(filter)
+            .sort({ createdAt: -1 })
+            .limit(200)
+            .lean();
+
+        return res.json({
+            success: true,
+            count: ideas.length,
+            ideas,
+        });
+    } catch (error) {
+        console.error("Get ideas error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Unable to load ideas.",
+        });
+    }
+};
+
+const getIdeaById = async (req, res) => {
+    try {
+        if (!validObjectId(req.params.ideaId)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid idea ID.",
+            });
+        }
+
+        const idea = await Idea.findById(req.params.ideaId);
+
+        if (!idea) {
+            return res.status(404).json({
+                success: false,
+                message: "Idea not found.",
+            });
+        }
+
+        return res.json({ success: true, idea });
+    } catch (error) {
+        console.error("Get idea error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Unable to load idea.",
+        });
+    }
+};
+
+const updateIdea = async (req, res) => {
+    try {
+        if (!validObjectId(req.params.ideaId)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid idea ID.",
+            });
+        }
+
+        const idea = await Idea.findById(req.params.ideaId);
+
+        if (!idea) {
+            return res.status(404).json({
+                success: false,
+                message: "Idea not found.",
+            });
+        }
+
+        if (!isOwner(idea, req.connectionIdentity)) {
+            return res.status(403).json({
+                success: false,
+                message: "You can only edit your own ideas.",
+            });
+        }
+
+        const { title, description, category, tags, creatorName } = req.body;
+
+        if (title !== undefined) {
+            if (typeof title !== "string" || !title.trim()) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Title cannot be empty.",
+                });
+            }
+            idea.title = title.trim();
+        }
+
+        if (description !== undefined) {
+            if (typeof description !== "string" || !description.trim()) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Description cannot be empty.",
+                });
+            }
+            idea.description = description.trim();
+        }
+
+        if (category !== undefined) {
+            if (typeof category !== "string" || !category.trim()) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Category cannot be empty.",
+                });
+            }
+            idea.category = category.trim();
+        }
+
+        if (tags !== undefined) {
+            const cleanTags = Array.isArray(tags)
+                ? tags
+                : typeof tags === "string"
+                    ? tags.split(",")
+                    : [];
+
+            idea.tags = cleanTags
+                .filter((tag) => typeof tag === "string")
+                .map((tag) => tag.trim().replace(/^#/, ""))
+                .filter(Boolean)
+                .slice(0, 5);
+        }
+
+        if (typeof creatorName === "string") {
+            idea.creatorName = creatorName.trim().slice(0, 100);
+        }
+
+        await idea.save();
+
+        return res.json({
+            success: true,
+            message: "Idea updated successfully.",
+            idea,
+        });
+    } catch (error) {
+        console.error("Update idea error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Unable to update idea.",
+        });
+    }
+};
+
+const deleteIdea = async (req, res) => {
+    try {
+        if (!validObjectId(req.params.ideaId)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid idea ID.",
+            });
+        }
+
+        const idea = await Idea.findById(req.params.ideaId);
+
+        if (!idea) {
+            return res.status(404).json({
+                success: false,
+                message: "Idea not found.",
+            });
+        }
+
+        if (!isOwner(idea, req.connectionIdentity)) {
+            return res.status(403).json({
+                success: false,
+                message: "You can only delete your own ideas.",
+            });
+        }
+
+        await idea.deleteOne();
+
+        return res.json({
+            success: true,
+            message: "Idea deleted successfully.",
+        });
+    } catch (error) {
+        console.error("Delete idea error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Unable to delete idea.",
+        });
+    }
+};
+
+module.exports = {
+    createIdea,
+    getIdeas,
+    getIdeaById,
+    updateIdea,
+    deleteIdea,
+};

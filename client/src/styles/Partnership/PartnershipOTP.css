@@ -1,0 +1,62 @@
+.partnership-otp-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fb;
+    padding: 20px;
+}
+
+.partnership-otp-card {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    padding: 45px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+}
+
+.otp-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.partnership-otp-card h1 {
+    margin-bottom: 10px;
+}
+
+.partnership-otp-card p {
+    color: #777;
+}
+
+.partnership-otp-card form {
+    margin-top: 30px;
+}
+
+.partnership-otp-card input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px;
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.partnership-otp-card button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+}
+
+.otp-message {
+    margin-top: 15px;
+    color: #c00;
+}

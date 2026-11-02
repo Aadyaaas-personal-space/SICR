@@ -1,0 +1,77 @@
+.partnership-login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f7fb;
+    padding: 20px;
+}
+
+.partnership-login-card {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+}
+
+.partnership-login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.partnership-login-header span {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.partnership-login-header h1 {
+    font-size: 34px;
+    margin: 12px 0;
+}
+
+.partnership-login-header p {
+    color: #777;
+}
+
+.partnership-login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.login-form-group label {
+    font-weight: 600;
+}
+
+.login-form-group input {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.partnership-login-card button {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    font-size: 16px;
+}
+
+.login-message {
+    color: #c00;
+}
+
+.register-link {
+    margin-top: 25px;
+    text-align: center;
+}

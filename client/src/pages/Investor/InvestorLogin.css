@@ -1,0 +1,319 @@
+/* =====================================================
+   PAGE
+===================================================== */
+
+.investor-login-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    background: #f8fafc;
+
+    color: #111827;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.investor-login-card {
+    width: 100%;
+    max-width: 480px;
+
+    padding: 42px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.06);
+}
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.investor-login-brand {
+    margin-bottom: 35px;
+}
+
+.investor-logo {
+    font-size: 28px;
+    font-weight: 900;
+
+    color: #4f46e5;
+}
+
+.investor-login-brand span {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    color: #9ca3af;
+}
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.investor-login-heading span {
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: #4f46e5;
+}
+
+.investor-login-heading h1 {
+    margin: 8px 0;
+
+    font-size: 32px;
+
+    font-weight: 800;
+}
+
+.investor-login-heading p {
+    margin: 0 0 28px;
+
+    color: #6b7280;
+
+    line-height: 1.6;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.investor-login-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #374151;
+}
+
+.form-group input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #4f46e5;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.investor-login-button {
+    margin-top: 5px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.investor-login-button:hover {
+    background: #4338ca;
+
+    transform: translateY(-1px);
+}
+
+.investor-login-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.investor-login-error {
+    margin-bottom: 20px;
+
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #dc2626;
+
+    font-size: 13px;
+}
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
+.investor-login-success {
+    margin-bottom: 20px;
+
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    color: #16a34a;
+
+    font-size: 13px;
+}
+
+/* =====================================================
+   REGISTER
+===================================================== */
+
+.investor-login-register {
+    margin-top: 28px;
+
+    padding-top: 24px;
+
+    border-top: 1px solid #e5e7eb;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #6b7280;
+}
+
+.investor-login-register a {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #4f46e5;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.investor-login-register a:hover {
+    text-decoration: underline;
+}
+
+/* =====================================================
+   BACK
+===================================================== */
+
+.investor-back-button {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 11px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.investor-back-button:hover {
+    background: #f3f4f6;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 550px) {
+
+    .investor-login-page {
+        padding: 20px;
+    }
+
+    .investor-login-card {
+        padding: 30px 22px;
+
+        border-radius: 16px;
+    }
+
+    .investor-login-heading h1 {
+        font-size: 28px;
+    }
+
+}

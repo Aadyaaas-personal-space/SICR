@@ -1,0 +1,310 @@
+import { useEffect, useState } from "react";
+
+import { getLoggedInIdentity } from "../../utils/authIdentity";
+
+import {
+    getNotifications,
+    markNotificationAsRead,
+    markAllNotificationsAsRead,
+} from "../../services/notificationService";
+
+import "./Notifications.css";
+
+function Notifications() {
+    const [notifications, setNotifications] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    const identity = getLoggedInIdentity();
+
+    const loadNotifications = async () => {
+        try {
+            setLoading(true);
+            setError("");
+
+            if (!identity) {
+                setError("Please log in to view notifications.");
+                return;
+            }
+
+            const result = await getNotifications(
+                identity.type
+            );
+
+            setNotifications(
+                result.notifications || []
+            );
+        } catch (error) {
+            console.error(
+                "Notification loading error:",
+                error
+            );
+
+            setError(
+                error.message ||
+                "Unable to load notifications."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        loadNotifications();
+    }, []);
+
+    const handleRead = async (notification) => {
+        try {
+            if (notification.isRead) return;
+
+            await markNotificationAsRead(
+                notification._id,
+                identity.type
+            );
+
+            setNotifications((current) =>
+                current.map((item) =>
+                    item._id === notification._id
+                        ? {
+                            ...item,
+                            isRead: true,
+                            readAt: new Date(),
+                        }
+                        : item
+                )
+            );
+        } catch (error) {
+            console.error(
+                "Mark notification read error:",
+                error
+            );
+        }
+    };
+
+    const handleMarkAllRead = async () => {
+        try {
+            await markAllNotificationsAsRead(
+                identity.type
+            );
+
+            setNotifications((current) =>
+                current.map((item) => ({
+                    ...item,
+                    isRead: true,
+                    readAt: new Date(),
+                }))
+            );
+        } catch (error) {
+            console.error(
+                "Mark all notifications error:",
+                error
+            );
+        }
+    };
+
+    const unreadCount = notifications.filter(
+        (notification) => !notification.isRead
+    ).length;
+
+    const getNotificationIcon = (type) => {
+        switch (type) {
+            case "CONNECTION_REQUEST":
+                return "??";
+
+            case "CONNECTION_ACCEPTED":
+                return "?";
+
+            case "CONNECTION_REJECTED":
+                return "×";
+
+            case "CONNECTION_CANCELLED":
+                return "?";
+
+            case "CONNECTION_REMOVED":
+                return "-";
+
+            default:
+                return "?";
+        }
+    };
+
+    const formatDate = (date) => {
+        if (!date) return "";
+
+        return new Date(date).toLocaleString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+            }
+        );
+    };
+
+    return (
+        <div className="notifications-page">
+
+            <div className="notifications-container">
+
+                {/* HEADER */}
+
+                <div className="notifications-header">
+
+                    <div>
+                        <span className="notifications-eyebrow">
+                            SICR ACTIVITY
+                        </span>
+
+                        <h1>
+                            Notifications
+                        </h1>
+
+                        <p>
+                            Stay updated with your
+                            ecosystem activity and
+                            connections.
+                        </p>
+                    </div>
+
+                    {unreadCount > 0 && (
+                        <button
+                            className="mark-all-btn"
+                            onClick={handleMarkAllRead}
+                        >
+                            Mark all as read
+                        </button>
+                    )}
+
+                </div>
+
+                {/* STATS */}
+
+                <div className="notification-stats">
+
+                    <div className="notification-stat">
+                        <span>Total</span>
+                        <strong>
+                            {notifications.length}
+                        </strong>
+                    </div>
+
+                    <div className="notification-stat">
+                        <span>Unread</span>
+                        <strong>
+                            {unreadCount}
+                        </strong>
+                    </div>
+
+                </div>
+
+                {/* ERROR */}
+
+                {error && (
+                    <div className="notification-error">
+                        {error}
+                    </div>
+                )}
+
+                {/* LOADING */}
+
+                {loading ? (
+                    <div className="notification-empty">
+                        <div className="notification-loader" />
+                        <p>
+                            Loading notifications...
+                        </p>
+                    </div>
+                ) : notifications.length === 0 ? (
+
+                    <div className="notification-empty">
+
+                        <div className="empty-icon">
+                            ??
+                        </div>
+
+                        <h2>
+                            You're all caught up
+                        </h2>
+
+                        <p>
+                            New SICR activity will
+                            appear here.
+                        </p>
+
+                    </div>
+
+                ) : (
+
+                    <div className="notification-list">
+
+                        {notifications.map(
+                            (notification) => (
+
+                                <div
+                                    key={
+                                        notification._id
+                                    }
+                                    className={`notification-card ${
+                                        notification.isRead
+                                            ? "read"
+                                            : "unread"
+                                    }`}
+                                    onClick={() =>
+                                        handleRead(
+                                            notification
+                                        )
+                                    }
+                                >
+
+                                    <div className="notification-icon">
+                                        {getNotificationIcon(
+                                            notification.type
+                                        )}
+                                    </div>
+
+                                    <div className="notification-content">
+
+                                        <div className="notification-title-row">
+
+                                            <h3>
+                                                {
+                                                    notification.title
+                                                }
+                                            </h3>
+
+                                            {!notification.isRead && (
+                                                <span className="unread-dot" />
+                                            )}
+
+                                        </div>
+
+                                        <p>
+                                            {
+                                                notification.message
+                                            }
+                                        </p>
+
+                                        <span className="notification-time">
+                                            {formatDate(
+                                                notification.createdAt
+                                            )}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+                            )
+                        )}
+
+                    </div>
+                )}
+
+            </div>
+
+        </div>
+    );
+}
+
+export default Notifications;

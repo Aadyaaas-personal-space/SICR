@@ -1,0 +1,1620 @@
+[
+ {
+  "id": 1,
+  "name": "Software Developer",
+  "icon": "💻",
+  "category": "After 12th",
+  "desc": "Build apps, websites and software.",
+  "tags": {
+   "tech": 3,
+   "analyze": 2,
+   "create": 1
+  },
+  "steps": [
+   {
+    "stage": "After 10th",
+    "text": "Choose Science with Maths or Computer Science"
+   },
+   {
+    "stage": "After 12th",
+    "text": "B.Tech / BCA / BSc CS, or self-learn plus diploma"
+   },
+   {
+    "stage": "Learn",
+    "text": "Python or JavaScript, DSA, Git, databases"
+   },
+   {
+    "stage": "Build",
+    "text": "3 real projects on GitHub, join hackathons"
+   },
+   {
+    "stage": "Intern",
+    "text": "Apply for internships in 2nd/3rd year"
+   },
+   {
+    "stage": "Job",
+    "text": "Junior Developer, Senior Developer, Tech Lead"
+   }
+  ],
+  "skills": [
+   "Coding",
+   "Problem solving",
+   "Teamwork"
+  ],
+  "startup": "Launch a SaaS product, app or freelance dev agency."
+ },
+ {
+  "id": 2,
+  "name": "Chef",
+  "icon": "🍳",
+  "category": "Passion",
+  "desc": "Cook professionally in hotels, cafes or your own kitchen.",
+  "tags": {
+   "food": 3,
+   "create": 2,
+   "people": 1
+  },
+  "steps": [
+   {
+    "stage": "After 10th/12th",
+    "text": "Culinary diploma or Hotel Management degree (BHM, IHM)"
+   },
+   {
+    "stage": "Learn",
+    "text": "Knife skills, cuisines, hygiene, food costing"
+   },
+   {
+    "stage": "Train",
+    "text": "Internship in a hotel or restaurant kitchen"
+   },
+   {
+    "stage": "Grow",
+    "text": "Commis Chef, Chef de Partie, Sous Chef, Head Chef"
+   },
+   {
+    "stage": "Specialize",
+    "text": "Baking, pastry, Indian or continental cuisine"
+   },
+   {
+    "stage": "Brand",
+    "text": "Build a social media food portfolio"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Time management",
+   "Hygiene"
+  ],
+  "startup": "Open a cloud kitchen, cafe, catering or cooking classes."
+ },
+ {
+  "id": 3,
+  "name": "Dancer / Choreographer",
+  "icon": "💃",
+  "category": "Passion",
+  "desc": "Perform, teach or choreograph for stage, film and events.",
+  "tags": {
+   "move": 3,
+   "create": 2,
+   "people": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Join a trained dance academy and pick a style"
+   },
+   {
+    "stage": "Train",
+    "text": "Practice daily, add fitness and flexibility"
+   },
+   {
+    "stage": "Perform",
+    "text": "Stage shows, college fests, competitions"
+   },
+   {
+    "stage": "Portfolio",
+    "text": "Record videos, build an Instagram/YouTube profile"
+   },
+   {
+    "stage": "Professional",
+    "text": "Audition for troupes, films, reality shows"
+   },
+   {
+    "stage": "Teach",
+    "text": "Become a trainer or choreographer"
+   }
+  ],
+  "skills": [
+   "Rhythm",
+   "Stamina",
+   "Stage confidence"
+  ],
+  "startup": "Start a dance academy, online classes or event troupe."
+ },
+ {
+  "id": 4,
+  "name": "Doctor (MBBS)",
+  "icon": "🏥",
+  "category": "After 12th",
+  "desc": "Diagnose and treat patients.",
+  "tags": {
+   "health": 3,
+   "people": 2,
+   "analyze": 2
+  },
+  "steps": [
+   {
+    "stage": "After 10th",
+    "text": "Choose Science with Biology (PCB)"
+   },
+   {
+    "stage": "After 12th",
+    "text": "Crack NEET-UG and join MBBS (5.5 years)"
+   },
+   {
+    "stage": "Internship",
+    "text": "1 year compulsory rotating internship"
+   },
+   {
+    "stage": "Specialize",
+    "text": "NEET-PG for MD/MS"
+   },
+   {
+    "stage": "Practice",
+    "text": "Hospital job or own clinic"
+   },
+   {
+    "stage": "Alternatives",
+    "text": "BDS, BAMS, Nursing, Physiotherapy"
+   }
+  ],
+  "skills": [
+   "Empathy",
+   "Memory",
+   "Stress handling"
+  ],
+  "startup": "Open a clinic, diagnostic lab or health-tech startup."
+ },
+ {
+  "id": 5,
+  "name": "UI/UX & Graphic Designer",
+  "icon": "🎨",
+  "category": "After 12th",
+  "desc": "Design apps, websites, brands and visuals.",
+  "tags": {
+   "create": 3,
+   "tech": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Any stream works; learn drawing and design basics"
+   },
+   {
+    "stage": "Study",
+    "text": "B.Des / BFA / diploma (NID, NIFT, UCEED) or online courses"
+   },
+   {
+    "stage": "Tools",
+    "text": "Figma, Photoshop, Illustrator, Canva"
+   },
+   {
+    "stage": "Portfolio",
+    "text": "Create 5 case studies on Behance"
+   },
+   {
+    "stage": "Intern",
+    "text": "Apply to design studios and startups"
+   },
+   {
+    "stage": "Job",
+    "text": "Junior Designer, Senior Designer, Design Lead"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Visual sense",
+   "Communication"
+  ],
+  "startup": "Run a freelance design studio or branding agency."
+ },
+ {
+  "id": 6,
+  "name": "Chartered Accountant",
+  "icon": "📊",
+  "category": "After 12th",
+  "desc": "Handle accounts, tax, audit and finance.",
+  "tags": {
+   "business": 3,
+   "analyze": 3
+  },
+  "steps": [
+   {
+    "stage": "After 10th",
+    "text": "Commerce stream preferred"
+   },
+   {
+    "stage": "After 12th",
+    "text": "Register for CA Foundation"
+   },
+   {
+    "stage": "Inter",
+    "text": "Clear CA Intermediate"
+   },
+   {
+    "stage": "Articleship",
+    "text": "3 years practical training"
+   },
+   {
+    "stage": "Final",
+    "text": "Clear CA Final"
+   },
+   {
+    "stage": "Career",
+    "text": "Audit, tax, finance or own practice"
+   }
+  ],
+  "skills": [
+   "Maths",
+   "Accuracy",
+   "Law knowledge"
+  ],
+  "startup": "Start a CA firm, tax-filing app or finance consulting."
+ },
+ {
+  "id": 7,
+  "name": "Teacher / Educator",
+  "icon": "📚",
+  "category": "After 12th",
+  "desc": "Teach in schools, colleges or online.",
+  "tags": {
+   "people": 3,
+   "create": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Complete graduation in your subject"
+   },
+   {
+    "stage": "Training",
+    "text": "B.Ed (school) or MA/MSc + NET (college)"
+   },
+   {
+    "stage": "Exams",
+    "text": "CTET / TET / state exams"
+   },
+   {
+    "stage": "Practice",
+    "text": "Teach and build communication skills"
+   },
+   {
+    "stage": "Digital",
+    "text": "Create online courses and YouTube lessons"
+   },
+   {
+    "stage": "Growth",
+    "text": "Senior teacher, principal, academic head"
+   }
+  ],
+  "skills": [
+   "Patience",
+   "Communication",
+   "Subject mastery"
+  ],
+  "startup": "Start a coaching centre or ed-tech platform."
+ },
+ {
+  "id": 8,
+  "name": "Content Creator",
+  "icon": "🎥",
+  "category": "Passion",
+  "desc": "Earn through videos, reels, blogs and podcasts.",
+  "tags": {
+   "create": 3,
+   "people": 2,
+   "tech": 1
+  },
+  "steps": [
+   {
+    "stage": "Choose niche",
+    "text": "Pick a topic you can share for years"
+   },
+   {
+    "stage": "Learn",
+    "text": "Video editing, scripting, SEO, camera basics"
+   },
+   {
+    "stage": "Post",
+    "text": "Upload consistently for 90 days"
+   },
+   {
+    "stage": "Grow",
+    "text": "Study analytics and collaborate with others"
+   },
+   {
+    "stage": "Earn",
+    "text": "Ads, brand deals, courses, affiliate links"
+   },
+   {
+    "stage": "Scale",
+    "text": "Build a team and your own brand"
+   }
+  ],
+  "skills": [
+   "Storytelling",
+   "Consistency",
+   "Editing"
+  ],
+  "startup": "Build a media brand or creator-tools business."
+ },
+ {
+  "id": 9,
+  "name": "Digital Marketer",
+  "icon": "📈",
+  "category": "After 12th",
+  "desc": "Promote brands using social media, SEO and ads.",
+  "tags": {
+   "business": 3,
+   "create": 2,
+   "analyze": 2
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Any stream; BBA/BCom/BA helps but is not required"
+   },
+   {
+    "stage": "Learn",
+    "text": "SEO, Google Ads, Meta Ads, email, analytics"
+   },
+   {
+    "stage": "Certify",
+    "text": "Google and HubSpot free certifications"
+   },
+   {
+    "stage": "Practice",
+    "text": "Run a small page or help a local shop"
+   },
+   {
+    "stage": "Job",
+    "text": "Marketing executive, then manager"
+   },
+   {
+    "stage": "Specialize",
+    "text": "Performance, content or social media head"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Data reading",
+   "Writing"
+  ],
+  "startup": "Start a marketing agency for local businesses."
+ },
+ {
+  "id": 10,
+  "name": "Lawyer",
+  "icon": "⚖️",
+  "category": "After 12th",
+  "desc": "Advise clients and argue cases.",
+  "tags": {
+   "people": 2,
+   "analyze": 3,
+   "business": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Any stream; take CLAT/AILET for 5-year BA LLB"
+   },
+   {
+    "stage": "Study",
+    "text": "5-year integrated LLB or 3-year LLB after graduation"
+   },
+   {
+    "stage": "Intern",
+    "text": "Work under senior lawyers or in law firms"
+   },
+   {
+    "stage": "Enroll",
+    "text": "Register with the Bar Council"
+   },
+   {
+    "stage": "Practice",
+    "text": "Court, corporate law or judiciary exams"
+   },
+   {
+    "stage": "Growth",
+    "text": "Senior Advocate, Judge, Legal Advisor"
+   }
+  ],
+  "skills": [
+   "Speaking",
+   "Reading",
+   "Logical thinking"
+  ],
+  "startup": "Start a law firm or legal-tech service."
+ },
+ {
+  "id": 11,
+  "name": "Diploma Engineer (Polytechnic)",
+  "icon": "🛠️",
+  "category": "After 10th",
+  "desc": "Get a technical diploma and start working early in engineering.",
+  "tags": {
+   "tech": 3,
+   "analyze": 1
+  },
+  "steps": [
+   {
+    "stage": "After 10th",
+    "text": "Take admission in a 3-year Polytechnic diploma"
+   },
+   {
+    "stage": "Learn",
+    "text": "Choose Mechanical, Civil, Electrical or Computer branch"
+   },
+   {
+    "stage": "Train",
+    "text": "Do workshops and industry internship"
+   },
+   {
+    "stage": "Option",
+    "text": "Lateral entry into B.Tech 2nd year"
+   },
+   {
+    "stage": "Job",
+    "text": "Junior Engineer, Supervisor, Technician"
+   }
+  ],
+  "skills": [
+   "Technical drawing",
+   "Practical skills",
+   "Maths"
+  ],
+  "startup": "Start a small repair, fabrication or service workshop."
+ },
+ {
+  "id": 12,
+  "name": "ITI Electrician",
+  "icon": "⚡",
+  "category": "After 10th",
+  "desc": "Install and repair electrical systems in homes and industries.",
+  "tags": {
+   "tech": 3
+  },
+  "steps": [
+   {
+    "stage": "After 10th",
+    "text": "Join ITI Electrician trade (1-2 years)"
+   },
+   {
+    "stage": "Learn",
+    "text": "Wiring, motors, safety, panel work"
+   },
+   {
+    "stage": "Certify",
+    "text": "Clear NCVT exam and get certificate"
+   },
+   {
+    "stage": "Apprentice",
+    "text": "Do apprenticeship in a company"
+   },
+   {
+    "stage": "Job",
+    "text": "Electrician, Maintenance Technician, Contractor"
+   }
+  ],
+  "skills": [
+   "Safety",
+   "Hands-on work",
+   "Problem solving"
+  ],
+  "startup": "Start an electrical contracting or solar installation business."
+ },
+ {
+  "id": 13,
+  "name": "Automobile Mechanic",
+  "icon": "🚗",
+  "category": "After 10th",
+  "desc": "Repair and service cars, bikes and EVs.",
+  "tags": {
+   "tech": 3
+  },
+  "steps": [
+   {
+    "stage": "After 10th",
+    "text": "ITI Mechanic Motor Vehicle or Automobile diploma"
+   },
+   {
+    "stage": "Learn",
+    "text": "Engines, brakes, electrical systems, EV basics"
+   },
+   {
+    "stage": "Train",
+    "text": "Work in a garage or service centre"
+   },
+   {
+    "stage": "Upgrade",
+    "text": "Learn diagnostics and EV repair"
+   },
+   {
+    "stage": "Career",
+    "text": "Service engineer or workshop owner"
+   }
+  ],
+  "skills": [
+   "Technical skill",
+   "Patience",
+   "Diagnosis"
+  ],
+  "startup": "Open a garage, EV service centre or doorstep repair service."
+ },
+ {
+  "id": 14,
+  "name": "Nurse",
+  "icon": "💉",
+  "category": "After 10th",
+  "desc": "Care for patients in hospitals and clinics.",
+  "tags": {
+   "health": 3,
+   "people": 3
+  },
+  "steps": [
+   {
+    "stage": "After 10th/12th",
+    "text": "ANM/GNM after 10th or B.Sc Nursing after 12th (PCB)"
+   },
+   {
+    "stage": "Learn",
+    "text": "Patient care, medicines, emergency handling"
+   },
+   {
+    "stage": "Register",
+    "text": "Nursing Council registration"
+   },
+   {
+    "stage": "Work",
+    "text": "Hospital, clinic or abroad jobs"
+   },
+   {
+    "stage": "Grow",
+    "text": "M.Sc Nursing, specialist nurse"
+   }
+  ],
+  "skills": [
+   "Empathy",
+   "Stamina",
+   "Responsibility"
+  ],
+  "startup": "Start home nursing care or elderly care services."
+ },
+ {
+  "id": 15,
+  "name": "Police / Defence Services",
+  "icon": "🛡️",
+  "category": "After 12th",
+  "desc": "Serve the country in police, army, navy or air force.",
+  "tags": {
+   "people": 2,
+   "move": 3
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Prepare for NDA, state police or CAPF exams"
+   },
+   {
+    "stage": "Fitness",
+    "text": "Daily running, strength and endurance training"
+   },
+   {
+    "stage": "Exams",
+    "text": "Written test, physical test, interview"
+   },
+   {
+    "stage": "Training",
+    "text": "Academy training"
+   },
+   {
+    "stage": "Career",
+    "text": "Officer ranks with promotion path"
+   }
+  ],
+  "skills": [
+   "Discipline",
+   "Fitness",
+   "Leadership"
+  ],
+  "startup": "Start a fitness or defence coaching academy after service."
+ },
+ {
+  "id": 16,
+  "name": "Photographer",
+  "icon": "📷",
+  "category": "Passion",
+  "desc": "Capture weddings, products, fashion and events.",
+  "tags": {
+   "create": 3,
+   "move": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Learn camera basics, light and composition"
+   },
+   {
+    "stage": "Practice",
+    "text": "Shoot daily and learn editing (Lightroom)"
+   },
+   {
+    "stage": "Portfolio",
+    "text": "Build online portfolio and Instagram"
+   },
+   {
+    "stage": "Earn",
+    "text": "Weddings, events, product shoots"
+   },
+   {
+    "stage": "Grow",
+    "text": "Specialize and hire assistants"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Editing",
+   "Client handling"
+  ],
+  "startup": "Open a photo studio or wedding photography brand."
+ },
+ {
+  "id": 17,
+  "name": "Musician / Singer",
+  "icon": "🎤",
+  "category": "Passion",
+  "desc": "Perform, record and teach music.",
+  "tags": {
+   "create": 3,
+   "move": 1,
+   "people": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Learn an instrument or vocal training"
+   },
+   {
+    "stage": "Practice",
+    "text": "Riyaaz daily and learn music theory"
+   },
+   {
+    "stage": "Perform",
+    "text": "Local shows, college events, competitions"
+   },
+   {
+    "stage": "Record",
+    "text": "Upload songs on YouTube and Spotify"
+   },
+   {
+    "stage": "Earn",
+    "text": "Concerts, studio work, teaching"
+   }
+  ],
+  "skills": [
+   "Rhythm",
+   "Discipline",
+   "Stage confidence"
+  ],
+  "startup": "Start a music academy or independent music label."
+ },
+ {
+  "id": 18,
+  "name": "Fashion Designer",
+  "icon": "👗",
+  "category": "Passion",
+  "desc": "Design clothes and build fashion brands.",
+  "tags": {
+   "create": 3,
+   "business": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Take NIFT, NID or a design diploma"
+   },
+   {
+    "stage": "Learn",
+    "text": "Sketching, fabrics, pattern making, sewing"
+   },
+   {
+    "stage": "Intern",
+    "text": "Work with a designer or boutique"
+   },
+   {
+    "stage": "Portfolio",
+    "text": "Create a collection and show it"
+   },
+   {
+    "stage": "Career",
+    "text": "Designer, stylist or own label"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Colour sense",
+   "Trend awareness"
+  ],
+  "startup": "Launch your own clothing label or online boutique."
+ },
+ {
+  "id": 19,
+  "name": "Pilot",
+  "icon": "✈️",
+  "category": "After 12th",
+  "desc": "Fly commercial or private aircraft.",
+  "tags": {
+   "tech": 2,
+   "analyze": 2,
+   "move": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Choose Science with Physics and Maths"
+   },
+   {
+    "stage": "Train",
+    "text": "Join a DGCA-approved flying school"
+   },
+   {
+    "stage": "Licence",
+    "text": "Get Student, then Commercial Pilot Licence (CPL)"
+   },
+   {
+    "stage": "Hours",
+    "text": "Complete required flying hours"
+   },
+   {
+    "stage": "Job",
+    "text": "First Officer, then Captain"
+   }
+  ],
+  "skills": [
+   "Focus",
+   "Decision making",
+   "Medical fitness"
+  ],
+  "startup": "Start a charter, drone or aviation training service."
+ },
+ {
+  "id": 20,
+  "name": "Journalist / Reporter",
+  "icon": "📰",
+  "category": "After 12th",
+  "desc": "Report news for TV, print and digital media.",
+  "tags": {
+   "people": 2,
+   "create": 2,
+   "analyze": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Any stream, BA in Journalism or Mass Communication"
+   },
+   {
+    "stage": "Learn",
+    "text": "Writing, interviewing, video and fact-checking"
+   },
+   {
+    "stage": "Intern",
+    "text": "Newspaper, TV channel or news website"
+   },
+   {
+    "stage": "Build",
+    "text": "Publish articles or a blog"
+   },
+   {
+    "stage": "Career",
+    "text": "Reporter, Editor, Anchor"
+   }
+  ],
+  "skills": [
+   "Writing",
+   "Curiosity",
+   "Courage"
+  ],
+  "startup": "Start a digital news site or YouTube news channel."
+ },
+ {
+  "id": 21,
+  "name": "Data Scientist",
+  "icon": "📉",
+  "category": "After 12th",
+  "desc": "Use data and machine learning to solve problems.",
+  "tags": {
+   "tech": 3,
+   "analyze": 3
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Science with Maths, B.Tech, BCA or BSc Statistics"
+   },
+   {
+    "stage": "Learn",
+    "text": "Python, statistics, SQL, machine learning"
+   },
+   {
+    "stage": "Build",
+    "text": "Kaggle projects and a portfolio"
+   },
+   {
+    "stage": "Intern",
+    "text": "Analyst or ML internship"
+   },
+   {
+    "stage": "Job",
+    "text": "Data Analyst, Data Scientist, ML Engineer"
+   }
+  ],
+  "skills": [
+   "Maths",
+   "Coding",
+   "Curiosity"
+  ],
+  "startup": "Build an AI or analytics product or consulting service."
+ },
+ {
+  "id": 22,
+  "name": "Cyber Security Analyst",
+  "icon": "🔐",
+  "category": "After 12th",
+  "desc": "Protect systems and data from hackers.",
+  "tags": {
+   "tech": 3,
+   "analyze": 2
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "B.Tech/BCA/BSc in Computer Science or IT"
+   },
+   {
+    "stage": "Learn",
+    "text": "Networking, Linux, ethical hacking basics"
+   },
+   {
+    "stage": "Certify",
+    "text": "CEH, CompTIA Security+"
+   },
+   {
+    "stage": "Practice",
+    "text": "Capture-the-flag and bug bounty"
+   },
+   {
+    "stage": "Job",
+    "text": "Security Analyst, Penetration Tester"
+   }
+  ],
+  "skills": [
+   "Networking",
+   "Curiosity",
+   "Attention to detail"
+  ],
+  "startup": "Start a security audit or training company."
+ },
+ {
+  "id": 23,
+  "name": "Mechanical Engineer",
+  "icon": "⚙️",
+  "category": "After 12th",
+  "desc": "Design and build machines and engines.",
+  "tags": {
+   "tech": 3,
+   "analyze": 2,
+   "create": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Science with PCM, JEE or state CET for B.Tech"
+   },
+   {
+    "stage": "Learn",
+    "text": "CAD, thermodynamics, manufacturing"
+   },
+   {
+    "stage": "Intern",
+    "text": "Factory or plant internship"
+   },
+   {
+    "stage": "Skills",
+    "text": "AutoCAD, SolidWorks, Python"
+   },
+   {
+    "stage": "Job",
+    "text": "Design, production or maintenance engineer"
+   }
+  ],
+  "skills": [
+   "Maths",
+   "Design thinking",
+   "Problem solving"
+  ],
+  "startup": "Start a manufacturing, 3D printing or product design unit."
+ },
+ {
+  "id": 24,
+  "name": "Civil Engineer / Architect",
+  "icon": "🏗️",
+  "category": "After 12th",
+  "desc": "Plan and construct buildings, roads and bridges.",
+  "tags": {
+   "create": 2,
+   "analyze": 2,
+   "tech": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Civil Engineering via JEE/CET or Architecture via NATA"
+   },
+   {
+    "stage": "Learn",
+    "text": "Structures, drawing, AutoCAD, site work"
+   },
+   {
+    "stage": "Intern",
+    "text": "Work on real construction sites"
+   },
+   {
+    "stage": "Licence",
+    "text": "Council of Architecture registration (for architects)"
+   },
+   {
+    "stage": "Career",
+    "text": "Site Engineer, Architect, Project Manager"
+   }
+  ],
+  "skills": [
+   "Drawing",
+   "Maths",
+   "Planning"
+  ],
+  "startup": "Start a construction or architecture firm."
+ },
+ {
+  "id": 25,
+  "name": "Psychologist",
+  "icon": "🧠",
+  "category": "After 12th",
+  "desc": "Help people with mental health and behaviour.",
+  "tags": {
+   "people": 3,
+   "health": 1,
+   "analyze": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Any stream, BA/BSc Psychology"
+   },
+   {
+    "stage": "Study",
+    "text": "MA/MSc in Clinical or Counselling Psychology"
+   },
+   {
+    "stage": "Train",
+    "text": "Supervised internship"
+   },
+   {
+    "stage": "Licence",
+    "text": "RCI registration for clinical practice"
+   },
+   {
+    "stage": "Career",
+    "text": "Counsellor, therapist, school psychologist"
+   }
+  ],
+  "skills": [
+   "Listening",
+   "Empathy",
+   "Patience"
+  ],
+  "startup": "Open a counselling centre or mental wellness app."
+ },
+ {
+  "id": 26,
+  "name": "Pharmacist",
+  "icon": "💊",
+  "category": "After 12th",
+  "desc": "Prepare and dispense medicines and advise patients.",
+  "tags": {
+   "health": 3,
+   "analyze": 2
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Science with PCB or PCM"
+   },
+   {
+    "stage": "Study",
+    "text": "D.Pharm (2 years) or B.Pharm (4 years)"
+   },
+   {
+    "stage": "Register",
+    "text": "State Pharmacy Council registration"
+   },
+   {
+    "stage": "Work",
+    "text": "Hospital, pharma company or medical store"
+   },
+   {
+    "stage": "Grow",
+    "text": "M.Pharm, research or own store"
+   }
+  ],
+  "skills": [
+   "Accuracy",
+   "Chemistry",
+   "Responsibility"
+  ],
+  "startup": "Open a medical store or online pharmacy."
+ },
+ {
+  "id": 27,
+  "name": "Hotel Manager",
+  "icon": "🏨",
+  "category": "After 12th",
+  "desc": "Manage hotels, resorts and hospitality services.",
+  "tags": {
+   "people": 3,
+   "business": 2,
+   "food": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Any stream, BHM / Hotel Management degree (NCHMCT JEE)"
+   },
+   {
+    "stage": "Learn",
+    "text": "Front office, housekeeping, food and beverage"
+   },
+   {
+    "stage": "Intern",
+    "text": "6-month hotel training"
+   },
+   {
+    "stage": "Start",
+    "text": "Management trainee in a hotel"
+   },
+   {
+    "stage": "Grow",
+    "text": "Department head, General Manager"
+   }
+  ],
+  "skills": [
+   "Communication",
+   "Service attitude",
+   "Leadership"
+  ],
+  "startup": "Start a homestay, guest house or boutique hotel."
+ },
+ {
+  "id": 28,
+  "name": "Fitness Trainer / Athlete",
+  "icon": "🏋️",
+  "category": "Passion",
+  "desc": "Train people or compete in sports.",
+  "tags": {
+   "move": 3,
+   "health": 2,
+   "people": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Choose a sport or fitness field you love"
+   },
+   {
+    "stage": "Learn",
+    "text": "Certification (ACE, NASM) or sports academy"
+   },
+   {
+    "stage": "Train",
+    "text": "Daily practice, diet and recovery"
+   },
+   {
+    "stage": "Compete",
+    "text": "District, state and national events"
+   },
+   {
+    "stage": "Career",
+    "text": "Trainer, coach or professional athlete"
+   }
+  ],
+  "skills": [
+   "Fitness",
+   "Discipline",
+   "Motivation"
+  ],
+  "startup": "Open a gym, sports academy or online fitness coaching."
+ },
+ {
+  "id": 29,
+  "name": "Farmer / Agri Entrepreneur",
+  "icon": "🌾",
+  "category": "Passion",
+  "desc": "Run modern farming and agriculture businesses.",
+  "tags": {
+   "business": 2,
+   "analyze": 1,
+   "food": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Learn modern farming, soil and crop planning"
+   },
+   {
+    "stage": "Study",
+    "text": "Agriculture diploma or B.Sc Agriculture"
+   },
+   {
+    "stage": "Learn",
+    "text": "Drip irrigation, organic farming, greenhouse"
+   },
+   {
+    "stage": "Sell",
+    "text": "Direct selling, FPOs, online platforms"
+   },
+   {
+    "stage": "Scale",
+    "text": "Food processing and export"
+   }
+  ],
+  "skills": [
+   "Planning",
+   "Hard work",
+   "Market sense"
+  ],
+  "startup": "Start organic produce, dairy or agri-tech business."
+ },
+ {
+  "id": 30,
+  "name": "Civil Services (IAS/IPS)",
+  "icon": "🏛️",
+  "category": "After 12th",
+  "desc": "Work in top government administration and policing.",
+  "tags": {
+   "people": 3,
+   "analyze": 3,
+   "business": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Complete graduation in any stream"
+   },
+   {
+    "stage": "Exam",
+    "text": "UPSC Civil Services (Prelims, Mains, Interview)"
+   },
+   {
+    "stage": "Prepare",
+    "text": "NCERTs, current affairs, answer writing"
+   },
+   {
+    "stage": "Train",
+    "text": "LBSNAA training"
+   },
+   {
+    "stage": "Career",
+    "text": "IAS, IPS, IFS and other services"
+   }
+  ],
+  "skills": [
+   "Reading",
+   "Discipline",
+   "Leadership"
+  ],
+  "startup": "Social impact projects, policy consulting or coaching."
+ },
+ {
+  "id": 31,
+  "name": "Animator / VFX Artist",
+  "icon": "🎬",
+  "category": "After 12th",
+  "desc": "Create animation and visual effects for films and games.",
+  "tags": {
+   "create": 3,
+   "tech": 2
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Any stream, B.Sc Animation or diploma course"
+   },
+   {
+    "stage": "Learn",
+    "text": "Blender, Maya, After Effects, drawing"
+   },
+   {
+    "stage": "Portfolio",
+    "text": "Make a 1-minute demo reel"
+   },
+   {
+    "stage": "Intern",
+    "text": "Animation studio or VFX house"
+   },
+   {
+    "stage": "Job",
+    "text": "Animator, VFX Artist, Motion Designer"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Drawing",
+   "Patience"
+  ],
+  "startup": "Start an animation studio or YouTube animation channel."
+ },
+ {
+  "id": 32,
+  "name": "Game Developer",
+  "icon": "🎮",
+  "category": "After 12th",
+  "desc": "Build video games for mobile, PC and console.",
+  "tags": {
+   "tech": 3,
+   "create": 3
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "B.Tech, BCA or a game design degree"
+   },
+   {
+    "stage": "Learn",
+    "text": "Unity or Unreal Engine, C# or C++"
+   },
+   {
+    "stage": "Build",
+    "text": "Make and publish 2-3 small games"
+   },
+   {
+    "stage": "Join",
+    "text": "Game jams and communities"
+   },
+   {
+    "stage": "Job",
+    "text": "Game Developer, Level Designer"
+   }
+  ],
+  "skills": [
+   "Coding",
+   "Creativity",
+   "Logic"
+  ],
+  "startup": "Start an indie game studio."
+ },
+ {
+  "id": 33,
+  "name": "Interior Designer",
+  "icon": "🛋️",
+  "category": "After 12th",
+  "desc": "Design homes, offices and commercial spaces.",
+  "tags": {
+   "create": 3,
+   "business": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Any stream, B.Des or diploma in Interior Design"
+   },
+   {
+    "stage": "Learn",
+    "text": "AutoCAD, SketchUp, colour and space planning"
+   },
+   {
+    "stage": "Intern",
+    "text": "Under a senior designer"
+   },
+   {
+    "stage": "Portfolio",
+    "text": "Show 5 room designs"
+   },
+   {
+    "stage": "Career",
+    "text": "Designer or own studio"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Planning",
+   "Client handling"
+  ],
+  "startup": "Open an interior design and decor studio."
+ },
+ {
+  "id": 34,
+  "name": "Event Manager",
+  "icon": "🎉",
+  "category": "Passion",
+  "desc": "Plan weddings, concerts and corporate events.",
+  "tags": {
+   "people": 3,
+   "business": 2,
+   "create": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Volunteer for college and local events"
+   },
+   {
+    "stage": "Learn",
+    "text": "Budgeting, vendors, scheduling, marketing"
+   },
+   {
+    "stage": "Study",
+    "text": "Event management course or BBA"
+   },
+   {
+    "stage": "Intern",
+    "text": "Event company"
+   },
+   {
+    "stage": "Career",
+    "text": "Event executive, manager, own agency"
+   }
+  ],
+  "skills": [
+   "Organization",
+   "Communication",
+   "Stress handling"
+  ],
+  "startup": "Start a wedding and event planning company."
+ },
+ {
+  "id": 35,
+  "name": "Banker / Finance Analyst",
+  "icon": "🏦",
+  "category": "After 12th",
+  "desc": "Work in banks, investments and financial markets.",
+  "tags": {
+   "business": 3,
+   "analyze": 3
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Commerce preferred, B.Com, BBA or Economics"
+   },
+   {
+    "stage": "Exams",
+    "text": "IBPS/SBI PO or CFA, MBA Finance"
+   },
+   {
+    "stage": "Learn",
+    "text": "Excel, accounting, markets"
+   },
+   {
+    "stage": "Intern",
+    "text": "Bank or finance firm"
+   },
+   {
+    "stage": "Career",
+    "text": "Bank officer, analyst, investment banker"
+   }
+  ],
+  "skills": [
+   "Maths",
+   "Accuracy",
+   "Communication"
+  ],
+  "startup": "Start a financial advisory or fintech service."
+ },
+ {
+  "id": 36,
+  "name": "Social Worker / NGO",
+  "icon": "🤝",
+  "category": "Passion",
+  "desc": "Work for community welfare and social change.",
+  "tags": {
+   "people": 3,
+   "health": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Any stream, BSW or MSW degree"
+   },
+   {
+    "stage": "Volunteer",
+    "text": "Join NGOs and community drives"
+   },
+   {
+    "stage": "Learn",
+    "text": "Fundraising, project management, field work"
+   },
+   {
+    "stage": "Work",
+    "text": "NGO, CSR team or government schemes"
+   },
+   {
+    "stage": "Career",
+    "text": "Programme manager, NGO founder"
+   }
+  ],
+  "skills": [
+   "Empathy",
+   "Communication",
+   "Commitment"
+  ],
+  "startup": "Start your own NGO or social enterprise."
+ },
+ {
+  "id": 37,
+  "name": "Makeup Artist / Beautician",
+  "icon": "💄",
+  "category": "Passion",
+  "desc": "Do bridal, film and fashion makeup.",
+  "tags": {
+   "create": 3,
+   "people": 2
+  },
+  "steps": [
+   {
+    "stage": "After 10th/12th",
+    "text": "Join a beauty and makeup academy"
+   },
+   {
+    "stage": "Learn",
+    "text": "Skin types, products, bridal and HD makeup"
+   },
+   {
+    "stage": "Practice",
+    "text": "Build a portfolio on models and friends"
+   },
+   {
+    "stage": "Earn",
+    "text": "Brides, shoots, salons"
+   },
+   {
+    "stage": "Grow",
+    "text": "Brand collaborations and training"
+   }
+  ],
+  "skills": [
+   "Creativity",
+   "Hygiene",
+   "Client handling"
+  ],
+  "startup": "Open a salon, bridal studio or makeup academy."
+ },
+ {
+  "id": 38,
+  "name": "Video Editor",
+  "icon": "🎞️",
+  "category": "Passion",
+  "desc": "Edit videos for YouTube, films and ads.",
+  "tags": {
+   "create": 3,
+   "tech": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Learn editing basics on free tools"
+   },
+   {
+    "stage": "Learn",
+    "text": "Premiere Pro, DaVinci Resolve, After Effects"
+   },
+   {
+    "stage": "Practice",
+    "text": "Edit reels and short films"
+   },
+   {
+    "stage": "Portfolio",
+    "text": "Upload samples on Behance or YouTube"
+   },
+   {
+    "stage": "Earn",
+    "text": "Freelance gigs, agencies, studios"
+   }
+  ],
+  "skills": [
+   "Storytelling",
+   "Software skills",
+   "Speed"
+  ],
+  "startup": "Start a video editing agency for creators."
+ },
+ {
+  "id": 39,
+  "name": "Veterinary Doctor",
+  "icon": "🐾",
+  "category": "After 12th",
+  "desc": "Treat and care for animals.",
+  "tags": {
+   "health": 3,
+   "people": 1,
+   "analyze": 1
+  },
+  "steps": [
+   {
+    "stage": "After 12th",
+    "text": "Science with Biology, NEET for BVSc & AH"
+   },
+   {
+    "stage": "Study",
+    "text": "5.5 years BVSc & AH"
+   },
+   {
+    "stage": "Register",
+    "text": "State Veterinary Council"
+   },
+   {
+    "stage": "Work",
+    "text": "Clinic, dairy, zoo or government"
+   },
+   {
+    "stage": "Grow",
+    "text": "MVSc specialisation"
+   }
+  ],
+  "skills": [
+   "Compassion",
+   "Biology",
+   "Patience"
+  ],
+  "startup": "Open a pet clinic, pet store or pet care service."
+ },
+ {
+  "id": 40,
+  "name": "Startup Founder / Entrepreneur",
+  "icon": "🚀",
+  "category": "Passion",
+  "desc": "Start and run your own business.",
+  "tags": {
+   "business": 3,
+   "create": 1,
+   "people": 1
+  },
+  "steps": [
+   {
+    "stage": "Start",
+    "text": "Find a real problem and talk to 20 customers"
+   },
+   {
+    "stage": "Validate",
+    "text": "Build a simple version (MVP) and test it"
+   },
+   {
+    "stage": "Plan",
+    "text": "Business model, pricing, costs"
+   },
+   {
+    "stage": "Fund",
+    "text": "Savings, grants, incubators, investors"
+   },
+   {
+    "stage": "Launch",
+    "text": "Start small, learn fast, grow"
+   }
+  ],
+  "skills": [
+   "Leadership",
+   "Risk taking",
+   "Selling"
+  ],
+  "startup": "You are the startup. Join an incubator and pitch your idea."
+ }
+]

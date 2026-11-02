@@ -1,0 +1,33 @@
+.connection-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #ffffff;
+    color: #111111;
+    padding: 9px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.connection-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.connection-btn:disabled {
+    cursor: default;
+    opacity: 0.75;
+}
+
+.connection-btn.pending {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.connection-btn.connected {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+}

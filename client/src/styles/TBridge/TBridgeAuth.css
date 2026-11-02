@@ -1,0 +1,122 @@
+.tb-auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background:
+        radial-gradient(circle at top left,
+            #e0e7ff,
+            transparent 35%),
+        #f8fafc;
+}
+
+.tb-auth-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 40px;
+    border-radius: 24px;
+    background: white;
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.12);
+}
+
+.tb-auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tb-logo {
+    width: 58px;
+    height: 58px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 17px;
+    background: #111827;
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.tb-auth-header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.tb-auth-header p {
+    color: #64748b;
+}
+
+.tb-auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.tb-auth-card label {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tb-auth-card input,
+.tb-auth-card select,
+.tb-auth-card textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #dbe1ea;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+.tb-auth-card input:focus,
+.tb-auth-card select:focus,
+.tb-auth-card textarea:focus {
+    border-color: #111827;
+}
+
+.tb-auth-card form button {
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #111827;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tb-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.tb-auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #64748b;
+}
+
+.tb-auth-footer button,
+.tb-secondary-btn {
+    border: none;
+    background: none;
+    color: #111827;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tb-otp-input {
+    text-align: center;
+    letter-spacing: 10px;
+    font-size: 24px !important;
+}
+
+.tb-secondary-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+}

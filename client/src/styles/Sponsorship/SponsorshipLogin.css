@@ -1,0 +1,132 @@
+.sponsor-login-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 40px 20px;
+    background: #f7f8fa;
+    color: #212529;
+}
+
+.sponsor-login-card {
+    width: 100%;
+    max-width: 480px;
+    padding: 42px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.ecosystem-label {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #6c757d;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.sponsor-login-card h1 {
+    margin: 0 0 8px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #212529;
+}
+
+.sponsor-login-card>p {
+    margin-bottom: 0;
+    color: #6c757d;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.sponsor-login-card form {
+    display: grid;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.sponsor-login-card input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #212529;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.sponsor-login-card input::placeholder {
+    color: #adb5bd;
+}
+
+.sponsor-login-card input:focus {
+    border-color: #212529;
+    box-shadow: 0 0 0 3px rgba(33, 37, 41, 0.08);
+}
+
+.sponsor-login-card form button {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #212529;
+    border-radius: 8px;
+    background: #212529;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.sponsor-login-card form button:hover {
+    background: #343a40;
+}
+
+.sponsor-login-card form button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.login-message {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f8f9fa;
+    color: #495057;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.register-link {
+    margin-top: 22px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.register-link:hover {
+    color: #212529;
+}
+
+@media (max-width: 576px) {
+    .sponsor-login-page {
+        padding: 25px 15px;
+    }
+
+    .sponsor-login-card {
+        padding: 30px 22px;
+        border-radius: 14px;
+    }
+
+    .sponsor-login-card h1 {
+        font-size: 30px;
+    }
+}

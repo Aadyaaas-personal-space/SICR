@@ -1,0 +1,494 @@
+import numpy as np
+from sentence_transformers import SentenceTransformer
+
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+
+MODEL_NAME = "all-MiniLM-L6-v2"
+
+print("=" * 70)
+print("SICR UNIVERSAL SEMANTIC MATCHING ENGINE")
+print("=" * 70)
+
+print(f"Loading embedding model: {MODEL_NAME}")
+
+model = SentenceTransformer(MODEL_NAME)
+
+print("Embedding model loaded successfully.")
+
+
+# ============================================================
+# TEXT NORMALIZATION
+# ============================================================
+
+def normalize_text(value):
+    """
+    Convert any supported value into clean text.
+    """
+
+    if value is None:
+        return ""
+
+    if isinstance(value, list):
+        return ", ".join(
+            str(item).strip()
+            for item in value
+            if item is not None
+        )
+
+    if isinstance(value, dict):
+        return " ".join(
+            f"{key}: {value}"
+            for key, value in value.items()
+            if value is not None
+        )
+
+    return str(value).strip()
+
+
+# ============================================================
+# PROFILE → SEMANTIC TEXT
+# ============================================================
+
+def build_profile_text(profile):
+    """
+    Convert a SICR profile into a single semantic representation.
+
+    The goal is NOT keyword matching.
+
+    The complete meaning of the profile is converted into text
+    before generating its embedding.
+    """
+
+    if not isinstance(profile, dict):
+        raise ValueError("Profile must be a dictionary.")
+
+    sections = []
+
+    field_labels = {
+        "userType": "User type",
+        "role": "Role",
+        "domain": "Domain",
+        "industry": "Industry",
+        "expertise": "Expertise",
+        "skills": "Skills",
+        "idea": "Startup idea",
+        "description": "Description",
+        "stage": "Startup stage",
+        "needs": "Current needs",
+        "requirements": "Requirements",
+        "offering": "What this user can offer",
+        "fundingType": "Funding type",
+        "fundingRange": "Funding range",
+        "location": "Location",
+        "experience": "Experience",
+        "interests": "Interests",
+        "connections": "Desired connections"
+    }
+
+    for field, label in field_labels.items():
+
+        if field in profile:
+
+            value = normalize_text(profile.get(field))
+
+            if value:
+                sections.append(
+                    f"{label}: {value}"
+                )
+
+    # Include additional fields not explicitly listed above.
+    known_fields = set(field_labels.keys())
+
+    for field, value in profile.items():
+
+        if field in known_fields:
+            continue
+
+        normalized = normalize_text(value)
+
+        if normalized:
+            sections.append(
+                f"{field}: {normalized}"
+            )
+
+    return "\n".join(sections)
+
+
+# ============================================================
+# EMBEDDING GENERATION
+# ============================================================
+
+def generate_embedding(text):
+    """
+    Generate a normalized semantic embedding.
+    """
+
+    if not text or not text.strip():
+        raise ValueError(
+            "Cannot generate embedding from empty text."
+        )
+
+    embedding = model.encode(
+        text,
+        convert_to_numpy=True,
+        normalize_embeddings=True
+    )
+
+    return embedding
+
+
+# ============================================================
+# COSINE SIMILARITY
+# ============================================================
+
+def semantic_similarity(text_a, text_b):
+    """
+    Calculate semantic similarity between two pieces of text.
+
+    Because embeddings are normalized, the dot product is
+    equivalent to cosine similarity.
+    """
+
+    embedding_a = generate_embedding(text_a)
+    embedding_b = generate_embedding(text_b)
+
+    similarity = float(
+        np.dot(embedding_a, embedding_b)
+    )
+
+    return similarity
+
+
+# ============================================================
+# PROFILE SIMILARITY
+# ============================================================
+
+def profile_similarity(profile_a, profile_b):
+    """
+    Compare two SICR profiles semantically.
+    """
+
+    text_a = build_profile_text(profile_a)
+    text_b = build_profile_text(profile_b)
+
+    similarity = semantic_similarity(
+        text_a,
+        text_b
+    )
+
+    return {
+        "similarity": round(similarity, 6),
+        "percentage": round(
+            max(0.0, similarity) * 100,
+            2
+        ),
+        "profileA": text_a,
+        "profileB": text_b
+    }
+
+
+# ============================================================
+# UNIVERSAL MATCH
+# ============================================================
+
+def universal_match(source_profile, candidate_profiles):
+    """
+    Compare one source profile against multiple candidate
+    profiles.
+
+    This function is ecosystem-independent.
+
+    candidate_profiles can eventually contain:
+        - Investors
+        - Mentors
+        - Corporates
+        - Partnerships
+        - Sponsors
+        - T-Bridge users
+        - Other SICR ecosystem profiles
+    """
+
+    if not isinstance(source_profile, dict):
+        raise ValueError(
+            "source_profile must be a dictionary."
+        )
+
+    if not isinstance(candidate_profiles, list):
+        raise ValueError(
+            "candidate_profiles must be a list."
+        )
+
+    source_text = build_profile_text(
+        source_profile
+    )
+
+    if not source_text:
+        raise ValueError(
+            "Source profile does not contain usable information."
+        )
+
+    source_embedding = generate_embedding(
+        source_text
+    )
+
+    results = []
+
+    for index, candidate in enumerate(candidate_profiles):
+
+        if not isinstance(candidate, dict):
+            continue
+
+        candidate_text = build_profile_text(
+            candidate
+        )
+
+        if not candidate_text:
+            continue
+
+        candidate_embedding = generate_embedding(
+            candidate_text
+        )
+
+        similarity = float(
+            np.dot(
+                source_embedding,
+                candidate_embedding
+            )
+        )
+
+        results.append({
+            "candidateIndex": index,
+            "similarity": round(
+                similarity,
+                6
+            ),
+            "matchPercentage": round(
+                max(0.0, similarity) * 100,
+                2
+            ),
+            "profile": candidate
+        })
+
+    results.sort(
+        key=lambda item: item["similarity"],
+        reverse=True
+    )
+
+    return results
+
+
+# ============================================================
+# TEST PROFILES
+# ============================================================
+
+if __name__ == "__main__":
+
+    print("\n")
+    print("=" * 70)
+    print("RUNNING UNIVERSAL SEMANTIC ENGINE TEST")
+    print("=" * 70)
+
+    startup = {
+        "userType": "STARTUP",
+        "role": "Founder",
+        "domain": "Automobile",
+        "industry": "Electric Vehicles",
+        "idea": (
+            "AI powered automobile accident detection "
+            "platform using intelligent cameras and sensors"
+        ),
+        "stage": "MVP",
+        "needs": [
+            "Funding",
+            "Automobile industry expertise",
+            "Technical mentorship"
+        ],
+        "location": "Mumbai"
+    }
+
+    candidates = [
+
+        {
+            "userType": "INVESTOR",
+            "role": "Angel Investor",
+            "domain": "Automobile",
+            "industry": "Electric Vehicles",
+            "expertise": [
+                "Automotive technology",
+                "EV startups",
+                "Mobility"
+            ],
+            "offering": [
+                "Startup funding",
+                "Business networking"
+            ],
+            "location": "Mumbai"
+        },
+
+        {
+            "userType": "MENTOR",
+            "role": "Automobile Technology Expert",
+            "domain": "Automobile",
+            "industry": "Automotive Engineering",
+            "expertise": [
+                "Vehicle safety",
+                "Automotive systems",
+                "AI",
+                "Computer vision"
+            ],
+            "offering": [
+                "Technical mentorship",
+                "Product validation"
+            ],
+            "location": "Mumbai"
+        },
+
+        {
+            "userType": "CORPORATE",
+            "role": "Software Services Company",
+            "domain": "Information Technology",
+            "industry": "Enterprise Software",
+            "expertise": [
+                "Web development",
+                "Cloud computing",
+                "ERP"
+            ],
+            "offering": [
+                "Software outsourcing"
+            ],
+            "location": "Pune"
+        }
+    ]
+
+    print("\nSOURCE PROFILE")
+    print("-" * 70)
+
+    print(
+        build_profile_text(startup)
+    )
+
+    print("\nGENERATING UNIVERSAL MATCHES...")
+    print("-" * 70)
+
+    matches = universal_match(
+        startup,
+        candidates
+    )
+
+    for rank, result in enumerate(
+        matches,
+        start=1
+    ):
+
+        profile = result["profile"]
+
+        print(
+            f"\n#{rank} "
+            f"{profile.get('userType', 'UNKNOWN')}"
+        )
+
+        print(
+            f"Role: "
+            f"{profile.get('role', 'N/A')}"
+        )
+
+        print(
+            f"Similarity: "
+            f"{result['similarity']}"
+        )
+
+        print(
+            f"Match: "
+            f"{result['matchPercentage']}%"
+        )
+
+    print("\n")
+    print("=" * 70)
+    print("UNIVERSAL SEMANTIC ENGINE TEST COMPLETED")
+    print("=" * 70)
+    
+    # ============================================================
+# SEMANTIC GLOBAL SEARCH
+# ============================================================
+
+def semantic_search(query, candidate_profiles, top_n=10):
+    """
+    Semantic global search across all SICR ecosystem profiles.
+
+    The user's search query is converted into an embedding and
+    compared against every candidate profile using cosine similarity.
+    """
+
+    if not query or not str(query).strip():
+        return []
+
+    if not isinstance(candidate_profiles, list):
+        return []
+
+    query_text = normalize_text(query)
+
+    if not query_text:
+        return []
+
+    # Generate embedding for the search query
+    query_embedding = generate_embedding(query_text)
+
+    results = []
+
+    for index, candidate in enumerate(candidate_profiles):
+
+        try:
+            if not isinstance(candidate, dict):
+                continue
+
+            # Convert candidate into normalized semantic text
+            candidate_text = build_profile_text(candidate)
+
+            if not candidate_text.strip():
+                continue
+
+            # Generate candidate embedding
+            candidate_embedding = generate_embedding(candidate_text)
+
+            # Calculate semantic similarity
+            similarity = float(
+                np.dot(query_embedding, candidate_embedding)
+            )
+
+            # Keep similarity within safe range
+            similarity = max(-1.0, min(1.0, similarity))
+
+            results.append({
+                "candidateIndex": index,
+                "similarity": round(similarity, 6),
+                "matchPercentage": round(
+                    max(0.0, similarity) * 100,
+                    2
+                ),
+                "profile": candidate
+            })
+
+        except Exception as error:
+            print(
+                f"Semantic search skipped candidate {index}:",
+                repr(error)
+            )
+
+    # Highest semantic similarity first
+    results.sort(
+        key=lambda item: item["similarity"],
+        reverse=True
+    )
+
+    try:
+        top_n = int(top_n)
+    except (TypeError, ValueError):
+        top_n = 10
+
+    if top_n < 1:
+        top_n = 1
+
+    return results[:top_n]

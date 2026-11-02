@@ -1,0 +1,134 @@
+.tb-ecosystem-page {
+    min-height: 100vh;
+    padding: 60px 30px;
+    background: #f8fafc;
+}
+
+.tb-ecosystem-header {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.tb-ecosystem-header h1 {
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.tb-ecosystem-header p {
+    color: #64748b;
+    font-size: 18px;
+}
+
+.tb-ecosystem-grid {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tb-ecosystem-card {
+    padding: 28px;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tb-ecosystem-card:hover {
+    transform: translateY(-4px);
+}
+
+.tb-ecosystem-card.selected {
+    border-color: #111827;
+}
+
+.tb-ecosystem-card.joined {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.tb-eco-icon {
+    font-size: 40px;
+}
+
+.tb-ecosystem-card h2 {
+    margin: 15px 0 8px;
+}
+
+.tb-ecosystem-card p {
+    color: #64748b;
+    min-height: 50px;
+}
+
+.tb-joined {
+    color: #15803d;
+    font-weight: 700;
+}
+
+.tb-ecosystem-page>.tb-primary-btn {
+    display: block;
+    margin: auto;
+}
+
+.tb-question-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 30px;
+    background: #f8fafc;
+}
+
+.tb-question-card {
+    width: 100%;
+    max-width: 750px;
+    padding: 45px;
+    background: white;
+    border-radius: 25px;
+    box-shadow:
+        0 20px 60px rgba(15, 23, 42, 0.1);
+}
+
+.tb-question-top {
+    margin-bottom: 35px;
+}
+
+.tb-question-progress {
+    height: 7px;
+    margin-top: 10px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tb-question-progress div {
+    height: 100%;
+    background: #111827;
+}
+
+.tb-question-card h1 {
+    font-size: 30px;
+}
+
+.tb-question-card p {
+    color: #64748b;
+}
+
+.tb-question-card textarea {
+    width: 100%;
+    margin: 25px 0;
+    padding: 15px;
+    resize: vertical;
+    border: 1px solid #dbe1ea;
+    border-radius: 12px;
+    outline: none;
+}
+
+@media (max-width: 800px) {
+    .tb-ecosystem-grid {
+        grid-template-columns: 1fr;
+    }
+}

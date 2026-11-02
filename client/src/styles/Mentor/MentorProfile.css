@@ -1,0 +1,297 @@
+.mentor-profile-page {
+    min-height: 100vh;
+
+    background: #080b13;
+
+    color: #fff;
+}
+
+.mentor-profile-header {
+    min-height: 85px;
+
+    padding: 18px 6%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    background: rgba(8, 11, 19, 0.92);
+}
+
+.mentor-profile-logo {
+    font-size: 23px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.mentor-profile-header>div:nth-child(2) {
+    flex: 1;
+}
+
+.mentor-profile-header span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8d7cff;
+    font-weight: 800;
+}
+
+.mentor-profile-header h1 {
+    margin: 5px 0 0;
+    font-size: 17px;
+}
+
+.mentor-profile-header button {
+    background: transparent;
+    color: #fff;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.mentor-profile-container {
+    width: min(1050px, 92%);
+
+    margin: 0 auto;
+
+    padding: 70px 0;
+}
+
+.mentor-profile-intro {
+    max-width: 700px;
+
+    margin-bottom: 45px;
+}
+
+.mentor-profile-intro>span {
+    color: #8d7cff;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.mentor-profile-intro h2 {
+    font-size: 44px;
+    line-height: 1.1;
+    margin: 12px 0;
+}
+
+.mentor-profile-intro p {
+    color: #8d95a8;
+    line-height: 1.7;
+}
+
+.mentor-profile-message {
+    padding: 14px 17px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.mentor-profile-message.error {
+    color: #ff9aaa;
+    background: rgba(255, 70, 100, 0.1);
+}
+
+.mentor-profile-message.success {
+    color: #72e4b1;
+    background: rgba(50, 220, 150, 0.1);
+}
+
+.mentor-profile-card {
+    padding: 32px;
+
+    margin-bottom: 20px;
+
+    background: #111522;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 22px;
+}
+
+.mentor-section-title {
+    display: flex;
+    gap: 18px;
+
+    margin-bottom: 28px;
+}
+
+.mentor-section-title>span {
+    color: #8d7cff;
+    font-weight: 900;
+}
+
+.mentor-section-title h3 {
+    margin: 0 0 5px;
+    font-size: 21px;
+}
+
+.mentor-section-title p {
+    margin: 0;
+    color: #80899c;
+    font-size: 14px;
+}
+
+.mentor-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mentor-chip {
+    padding: 10px 14px;
+
+    background: #0b0f1b;
+
+    color: #9aa2b5;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.mentor-chip:hover {
+    border-color: #8d7cff;
+}
+
+.mentor-chip.selected {
+    background: rgba(141, 124, 255, 0.15);
+
+    color: #fff;
+
+    border-color: #8d7cff;
+}
+
+.mentor-input-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.mentor-input-grid>div,
+.mentor-bio-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mentor-input-grid label,
+.mentor-big-label,
+.mentor-bio-field label {
+    color: #cdd2df;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.mentor-input-grid input,
+.mentor-input-grid select,
+.mentor-bio-field textarea {
+    padding: 14px;
+
+    border-radius: 11px;
+
+    background: #0b0f1b;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+
+    outline: none;
+}
+
+.mentor-input-grid input:focus,
+.mentor-input-grid select:focus,
+.mentor-bio-field textarea:focus {
+    border-color: #8d7cff;
+}
+
+.mentor-big-label {
+    display: block;
+    margin: 25px 0 12px;
+}
+
+.mentor-bio-field {
+    margin-top: 25px;
+}
+
+.mentor-bio-field textarea {
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.mentor-profile-submit {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 30px;
+}
+
+.mentor-profile-submit button {
+    padding: 16px 25px;
+
+    border: 0;
+
+    border-radius: 13px;
+
+    background: #fff;
+
+    color: #080b12;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.mentor-profile-submit button:disabled {
+    opacity: 0.5;
+}
+
+.mentor-profile-loading {
+    min-height: 100vh;
+
+    display: grid;
+    place-items: center;
+
+    color: #fff;
+}
+
+@media (max-width: 700px) {
+    .mentor-profile-container {
+        padding: 45px 0;
+    }
+
+    .mentor-profile-intro h2 {
+        font-size: 33px;
+    }
+
+    .mentor-profile-card {
+        padding: 22px;
+    }
+
+    .mentor-input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mentor-profile-header {
+        padding: 16px 5%;
+    }
+
+    .mentor-profile-header h1 {
+        display: none;
+    }
+}

@@ -1,0 +1,949 @@
+/* =====================================================
+   MENTOR DASHBOARD
+===================================================== */
+
+.mentor-dashboard-layout {
+    min-height: 100vh;
+    background: #f6f8fb;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.mentor-dashboard-main {
+    min-height: 100vh;
+    padding: 32px;
+    background:
+        radial-gradient(circle at top right,
+            rgba(37, 99, 235, 0.05),
+            transparent 28%),
+        #f6f8fb;
+}
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+.mentor-dashboard-loader {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #64748b;
+}
+
+.mentor-loader-circle {
+    width: 38px;
+    height: 38px;
+
+    border: 3px solid #dbeafe;
+    border-top-color: #2563eb;
+
+    border-radius: 50%;
+
+    animation: mentor-spin 0.8s linear infinite;
+
+    margin-bottom: 15px;
+}
+
+@keyframes mentor-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.mentor-hero {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+
+    gap: 30px;
+
+    padding: 42px;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+
+    background:
+        linear-gradient(135deg,
+            #ffffff 0%,
+            #f8fbff 100%);
+
+    box-shadow:
+        0 10px 35px rgba(15, 23, 42, 0.05);
+}
+
+.mentor-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    right: -120px;
+    top: -160px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(37, 99, 235, 0.06);
+
+    pointer-events: none;
+}
+
+.mentor-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.mentor-welcome-badge {
+    display: inline-flex;
+
+    padding: 7px 12px;
+
+    border-radius: 100px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.mentor-hero h1 {
+    margin: 18px 0 14px;
+
+    color: #172033;
+
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+}
+
+.mentor-hero h1 span {
+    color: #2563eb;
+}
+
+.mentor-hero p {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+/* HERO BUTTONS */
+
+.mentor-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+.mentor-primary-btn,
+.mentor-secondary-btn {
+    border: none;
+    border-radius: 10px;
+
+    padding: 13px 20px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.mentor-primary-btn {
+    background: #2563eb;
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.mentor-primary-btn:hover {
+    transform: translateY(-2px);
+
+    background: #1d4ed8;
+}
+
+.mentor-secondary-btn {
+    background: #ffffff;
+
+    color: #334155;
+
+    border: 1px solid #dbe2ea;
+}
+
+.mentor-secondary-btn:hover {
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.mentor-hero-visual {
+    position: relative;
+
+    min-height: 230px;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.mentor-card-main {
+    width: 230px;
+
+    padding: 28px;
+
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.mentor-card-main .mentor-card-icon {
+    display: flex;
+
+    width: 46px;
+    height: 46px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 24px;
+}
+
+.mentor-card-main strong {
+    display: block;
+
+    margin-top: 18px;
+
+    color: #1e293b;
+
+    font-size: 15px;
+}
+
+.mentor-card-main p {
+    margin-top: 8px;
+
+    color: #64748b;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+.mentor-floating-card {
+    position: absolute;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    padding: 12px 15px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.mentor-floating-card span {
+    font-size: 21px;
+}
+
+.mentor-floating-card strong {
+    display: block;
+
+    color: #334155;
+
+    font-size: 12px;
+}
+
+.mentor-floating-card small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+.mentor-card-top {
+    top: 15px;
+    right: 0;
+}
+
+.mentor-card-bottom {
+    bottom: 12px;
+    left: 0;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.mentor-stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-top: 24px;
+}
+
+.mentor-stat-card {
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    transition: 0.2s ease;
+}
+
+.mentor-stat-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(15, 23, 42, 0.06);
+}
+
+.mentor-stat-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    background: #f1f5f9;
+
+    font-size: 21px;
+}
+
+.mentor-stat-card span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.mentor-stat-card h2 {
+    margin: 5px 0;
+
+    color: #1e293b;
+
+    font-size: 21px;
+}
+
+.mentor-stat-card small {
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   CONTENT GRID
+===================================================== */
+
+.mentor-content-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 330px;
+
+    gap: 24px;
+
+    margin-top: 24px;
+}
+
+.mentor-main-column,
+.mentor-right-column {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+
+/* =====================================================
+   GENERAL CARD
+===================================================== */
+
+.mentor-section-card {
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 30px rgba(15, 23, 42, 0.03);
+}
+
+.mentor-section-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+.mentor-section-label {
+    display: block;
+
+    color: #2563eb;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.mentor-section-header h2 {
+    margin: 8px 0 0;
+
+    color: #1e293b;
+
+    font-size: 23px;
+
+    letter-spacing: -0.5px;
+}
+
+.mentor-section-icon {
+    display: flex;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+.mentor-section-description {
+    margin: 22px 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   FOCUS ITEMS
+===================================================== */
+
+.mentor-focus-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.mentor-focus-item {
+    padding: 17px;
+
+    border-radius: 13px;
+
+    background: #f8fafc;
+
+    border: 1px solid #edf0f4;
+}
+
+.mentor-focus-item>span {
+    display: inline-flex;
+
+    width: 28px;
+    height: 28px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #e0ecff;
+
+    color: #2563eb;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.mentor-focus-item strong {
+    display: block;
+
+    margin-top: 14px;
+
+    color: #334155;
+
+    font-size: 14px;
+}
+
+.mentor-focus-item p {
+    margin: 6px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+.mentor-quick-actions {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 24px;
+}
+
+.mentor-quick-actions button {
+    display: flex;
+
+    text-align: left;
+
+    gap: 12px;
+
+    align-items: center;
+
+    padding: 16px;
+
+    cursor: pointer;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 13px;
+
+    transition: 0.2s ease;
+}
+
+.mentor-quick-actions button:hover {
+    transform: translateY(-2px);
+
+    border-color: #bfdbfe;
+
+    background: #f8fbff;
+}
+
+.mentor-quick-actions button>span {
+    font-size: 21px;
+}
+
+.mentor-quick-actions strong {
+    display: block;
+
+    color: #334155;
+
+    font-size: 13px;
+}
+
+.mentor-quick-actions small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   PROFILE CARD
+===================================================== */
+
+.mentor-profile-card {
+    padding: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+}
+
+.mentor-profile-top {
+    display: flex;
+
+    gap: 13px;
+
+    align-items: center;
+}
+
+.mentor-avatar {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg,
+            #2563eb,
+            #60a5fa);
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.mentor-profile-top h3 {
+    margin: 0;
+
+    color: #1e293b;
+
+    font-size: 16px;
+}
+
+.mentor-profile-top p {
+    margin: 4px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+.mentor-profile-info {
+    margin-top: 24px;
+
+    border-top: 1px solid #edf0f4;
+}
+
+.mentor-profile-info>div {
+    padding: 15px 0;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.mentor-profile-info span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #94a3b8;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+}
+
+.mentor-profile-info strong {
+    color: #334155;
+
+    font-size: 12px;
+}
+
+.mentor-profile-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    background: #ffffff;
+
+    color: #2563eb;
+
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.mentor-profile-button:hover {
+    background: #eff6ff;
+}
+
+
+/* =====================================================
+   TIP CARD
+===================================================== */
+
+.mentor-tip-card {
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(145deg,
+            #eff6ff,
+            #ffffff);
+
+    border: 1px solid #dbeafe;
+}
+
+.mentor-tip-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.08);
+}
+
+.mentor-tip-card>span {
+    display: block;
+
+    margin-top: 18px;
+
+    color: #2563eb;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.mentor-tip-card h3 {
+    margin: 9px 0;
+
+    color: #1e3a5f;
+
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.mentor-tip-card p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1200px) {
+
+    .mentor-stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .mentor-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mentor-right-column {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .mentor-dashboard-main {
+        padding: 20px;
+    }
+
+    .mentor-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .mentor-hero-visual {
+        display: none;
+    }
+
+    .mentor-focus-grid,
+    .mentor-quick-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .mentor-dashboard-main {
+        padding: 14px;
+    }
+
+    .mentor-hero {
+        padding: 25px 20px;
+
+        border-radius: 16px;
+    }
+
+    .mentor-hero h1 {
+        font-size: 30px;
+    }
+
+    .mentor-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mentor-right-column {
+        grid-template-columns: 1fr;
+    }
+
+    .mentor-section-card {
+        padding: 20px;
+    }
+
+    .mentor-hero-actions {
+        flex-direction: column;
+    }
+
+    .mentor-primary-btn,
+    .mentor-secondary-btn {
+        width: 100%;
+    }
+}
+
+
+/* =====================================================
+   MENTOR DASHBOARD + FIXED SIDEBAR LAYOUT
+===================================================== */
+
+.mentor-dashboard-layout {
+    min-height: 100vh;
+    width: 100%;
+    background: #f6f8fb;
+}
+
+.mentor-dashboard-main {
+    box-sizing: border-box;
+    min-height: 100vh;
+
+    /* Sidebar width is 255px by default */
+    margin-left: 255px;
+    width: calc(100% - 255px);
+
+    min-width: 0;
+    padding: 28px;
+
+    overflow-x: hidden;
+}
+
+/* Sidebar becomes 220px */
+@media (max-width: 900px) {
+    .mentor-dashboard-main {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+        padding: 20px;
+    }
+}
+
+/* Sidebar becomes 75px on mobile */
+@media (max-width: 700px) {
+    .mentor-dashboard-main {
+        margin-left: 75px;
+        width: calc(100% - 75px);
+        padding: 14px;
+    }
+}

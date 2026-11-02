@@ -1,0 +1,240 @@
+.tb-dashboard {
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+.tb-dashboard-nav {
+    height: 75px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tb-dashboard-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.tb-dashboard-brand span {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: #111827;
+    color: white;
+    font-weight: 800;
+}
+
+.tb-dashboard-links {
+    display: flex;
+    gap: 8px;
+}
+
+.tb-dashboard-links button {
+    border: none;
+    background: transparent;
+    padding: 10px 13px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.tb-dashboard-links button:hover {
+    background: #f1f5f9;
+}
+
+.tb-dashboard-main {
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 5%;
+}
+
+.tb-dashboard-hero {
+    padding: 45px;
+    border-radius: 25px;
+    background: #111827;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tb-dashboard-hero p {
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 800;
+    opacity: 0.7;
+}
+
+.tb-dashboard-hero h1 {
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.tb-dashboard-hero span {
+    color: #cbd5e1;
+}
+
+.tb-dashboard-hero button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.tb-stats {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.tb-stat-card {
+    padding: 25px;
+    border-radius: 18px;
+    background: white;
+    border: 1px solid #e5e7eb;
+}
+
+.tb-stat-card span {
+    font-size: 25px;
+}
+
+.tb-stat-card strong {
+    display: block;
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.tb-stat-card p {
+    color: #64748b;
+}
+
+.tb-section {
+    margin-top: 35px;
+}
+
+.tb-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tb-section-header p {
+    color: #64748b;
+}
+
+.tb-section-header button {
+    border: 1px solid #dbe1ea;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.tb-dashboard-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, 1fr);
+    gap: 20px;
+}
+
+.tb-eco-dashboard-card {
+    padding: 25px;
+    border-radius: 20px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+}
+
+.tb-eco-card-icon {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: #f1f5f9;
+    font-size: 30px;
+}
+
+.tb-eco-card-content h3 {
+    margin: 8px 0;
+}
+
+.tb-eco-card-content p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.tb-eco-status {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.tb-progress {
+    height: 6px;
+    margin-top: 15px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tb-progress div {
+    height: 100%;
+    background: #111827;
+}
+
+.tb-eco-dashboard-card>button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 9px;
+    background: #111827;
+    color: white;
+    cursor: pointer;
+}
+
+.tb-empty {
+    grid-column: 1 / -1;
+    padding: 60px;
+    text-align: center;
+    background: white;
+    border-radius: 20px;
+}
+
+@media (max-width: 900px) {
+    .tb-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tb-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .tb-dashboard-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 700px) {
+    .tb-dashboard-links {
+        display: none;
+    }
+
+    .tb-eco-dashboard-card {
+        grid-template-columns: 1fr;
+    }
+}

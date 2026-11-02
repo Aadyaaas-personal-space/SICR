@@ -1,0 +1,322 @@
+/* =========================================================
+   SICR - Sponsorship Registration
+   Light • Simple • Professional
+   UI ONLY
+   ========================================================= */
+
+.sponsor-register-page {
+    min-height: 100vh;
+    padding: 48px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f7f8fa;
+    color: #212529;
+}
+
+.sponsor-register-card {
+    width: 100%;
+    max-width: 620px;
+
+    padding: 42px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.sponsor-heading {
+    margin-bottom: 30px;
+}
+
+.sponsor-heading>span {
+    display: inline-block;
+
+    margin-bottom: 12px;
+    padding: 6px 10px;
+
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+
+    color: #6c757d;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sponsor-heading h1 {
+    margin: 0 0 9px;
+
+    color: #212529;
+
+    font-size: 31px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.sponsor-heading p {
+    margin: 0;
+
+    color: #6c757d;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   ACCOUNT TYPE
+   ========================================================= */
+
+.account-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    margin-bottom: 26px;
+}
+
+.account-type button {
+    min-height: 92px;
+
+    padding: 15px;
+
+    text-align: left;
+
+    background: #ffffff;
+
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.account-type button:hover {
+    border-color: #adb5bd;
+    background: #fafbfc;
+}
+
+.account-type button.selected {
+    border-color: #343a40;
+    background: #f8f9fa;
+
+    box-shadow: 0 0 0 2px rgba(33, 37, 41, 0.05);
+}
+
+.account-type button strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #212529;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.account-type button small {
+    display: block;
+
+    color: #6c757d;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.sponsor-register-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sponsor-register-card input {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 13px;
+
+    background: #ffffff;
+
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+
+    color: #212529;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.sponsor-register-card input::placeholder {
+    color: #adb5bd;
+}
+
+.sponsor-register-card input:hover {
+    border-color: #adb5bd;
+}
+
+.sponsor-register-card input:focus {
+    border-color: #6c757d;
+
+    box-shadow:
+        0 0 0 3px rgba(108, 117, 125, 0.10);
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.primary-button {
+    width: 100%;
+    height: 47px;
+
+    margin-top: 5px;
+
+    border: 1px solid #212529;
+    border-radius: 8px;
+
+    background: #212529;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.primary-button:hover:not(:disabled) {
+    background: #343a40;
+    border-color: #343a40;
+}
+
+.primary-button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.primary-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.register-message {
+    margin-top: 18px;
+    padding: 12px 14px;
+
+    background: #fff8f8;
+
+    border: 1px solid #f0d0d0;
+    border-radius: 8px;
+
+    color: #a61b1b;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.login-link {
+    margin: 24px 0 0;
+    padding-top: 22px;
+
+    border-top: 1px solid #eef0f2;
+
+    text-align: center;
+
+    color: #6c757d;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.login-link strong {
+    color: #212529;
+    font-weight: 600;
+}
+
+.login-link:hover strong {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .sponsor-register-page {
+        padding: 28px 14px;
+        align-items: flex-start;
+    }
+
+    .sponsor-register-card {
+        margin-top: 10px;
+        padding: 30px 22px;
+
+        border-radius: 14px;
+    }
+
+    .account-type {
+        grid-template-columns: 1fr;
+    }
+
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .sponsor-heading h1 {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 420px) {
+    .sponsor-register-card {
+        padding: 26px 18px;
+    }
+
+    .sponsor-heading h1 {
+        font-size: 25px;
+    }
+}

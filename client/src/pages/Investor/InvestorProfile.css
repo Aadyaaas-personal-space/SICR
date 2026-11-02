@@ -1,0 +1,575 @@
+/* =====================================================
+   PAGE
+===================================================== */
+
+.investor-profile-page {
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #111827;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.investor-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    height: 72px;
+    padding: 0 5%;
+
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.navbar-logo {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.logo-main {
+    font-size: 24px;
+    font-weight: 900;
+    color: #4f46e5;
+    line-height: 1;
+}
+
+.logo-sub {
+    margin-top: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    color: #9ca3af;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link {
+    border: none;
+    background: transparent;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.nav-link.active {
+    color: #4f46e5;
+    background: #eef2ff;
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.investor-profile-container {
+    width: 88%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 40px 0 70px;
+}
+
+/* =====================================================
+   BACK
+===================================================== */
+
+.back-button {
+    margin-bottom: 30px;
+
+    border: 1px solid #e5e7eb;
+    background: white;
+
+    padding: 10px 17px;
+
+    border-radius: 9px;
+
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background: #f3f4f6;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 30px;
+}
+
+.profile-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #4f46e5;
+}
+
+.profile-header h1 {
+    margin: 10px 0;
+
+    font-size: 38px;
+}
+
+.profile-header p {
+    margin: 0;
+
+    color: #6b7280;
+
+    max-width: 650px;
+
+    line-height: 1.6;
+}
+
+/* =====================================================
+   COMPLETION
+===================================================== */
+
+.completion-card {
+    width: 210px;
+
+    padding: 22px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    flex-shrink: 0;
+}
+
+.completion-card span {
+    display: block;
+
+    font-size: 13px;
+
+    color: #6b7280;
+}
+
+.completion-card strong {
+    display: block;
+
+    margin: 5px 0;
+
+    font-size: 32px;
+
+    color: #4f46e5;
+}
+
+.completion-card small {
+    color: #6b7280;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+
+    background: #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin: 12px 0;
+}
+
+.progress-fill {
+    height: 100%;
+
+    background: #4f46e5;
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.message {
+    padding: 14px 18px;
+
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+.message.error {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.message.success {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
+
+/* =====================================================
+   QUESTION CARD
+===================================================== */
+
+.investor-profile-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.question-card {
+    display: grid;
+
+    grid-template-columns: 65px 1fr;
+
+    gap: 20px;
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+}
+
+.question-number {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.question-content h2 {
+    margin: 0 0 8px;
+
+    font-size: 21px;
+}
+
+.question-content p {
+    margin: 0 0 20px;
+
+    color: #6b7280;
+
+    line-height: 1.5;
+}
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.question-content input[type="text"],
+.question-content input[type="number"],
+.question-content textarea,
+.question-content select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    padding: 13px 14px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    background: white;
+
+    transition: 0.2s;
+}
+
+.question-content textarea {
+    resize: vertical;
+}
+
+.question-content input:focus,
+.question-content textarea:focus,
+.question-content select:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.question-content small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #9ca3af;
+}
+
+/* =====================================================
+   OPTIONS
+===================================================== */
+
+.option-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.option {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #4b5563;
+
+    transition: 0.2s;
+}
+
+.option:hover {
+    border-color: #6366f1;
+}
+
+.option.selected {
+    background: #eef2ff;
+
+    border-color: #6366f1;
+
+    color: #4f46e5;
+}
+
+.option input {
+    accent-color: #4f46e5;
+}
+
+/* =====================================================
+   RANGE
+===================================================== */
+
+.range-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 15px;
+}
+
+.range-grid label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #6b7280;
+}
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+.cancel-button,
+.save-button {
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.cancel-button {
+    border: 1px solid #d1d5db;
+
+    background: white;
+
+    color: #374151;
+}
+
+.save-button {
+    border: none;
+
+    background: #4f46e5;
+
+    color: white;
+}
+
+.save-button:hover {
+    background: #4338ca;
+}
+
+.save-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.profile-loading {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    color: #6b7280;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .navbar-links {
+        display: none;
+    }
+
+    .profile-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .completion-card {
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+    .option-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .investor-profile-container {
+        width: 92%;
+    }
+
+    .profile-header h1 {
+        font-size: 30px;
+    }
+
+    .question-card {
+        grid-template-columns: 1fr;
+
+        padding: 22px;
+    }
+
+    .range-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .option-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .cancel-button,
+    .save-button {
+        width: 100%;
+    }
+
+    .logo-sub {
+        display: none;
+    }
+}

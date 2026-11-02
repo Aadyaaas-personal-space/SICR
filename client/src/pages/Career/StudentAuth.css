@@ -1,0 +1,358 @@
+.student-auth-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    background: #ffffff;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: #172033;
+}
+
+/* LEFT VISUAL SECTION */
+
+.student-auth-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 8%;
+    overflow: hidden;
+    color: white;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.35), transparent 35%),
+        linear-gradient(145deg, #111827, #172554 65%, #312e81);
+}
+
+.student-auth-visual::after {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 50%;
+    right: -150px;
+    bottom: 10%;
+    box-shadow:
+        0 0 0 45px rgba(255, 255, 255, 0.025),
+        0 0 0 90px rgba(255, 255, 255, 0.02);
+    pointer-events: none;
+}
+
+.student-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.student-brand-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: #6366f1;
+    color: white;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.student-visual-content {
+    position: relative;
+    z-index: 1;
+    max-width: 540px;
+    margin: 60px 0;
+}
+
+.student-eyebrow,
+.student-heading-label {
+    color: #818cf8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.student-visual-content h1 {
+    margin: 22px 0;
+    font-size: clamp(34px, 4vw, 53px);
+    line-height: 1.17;
+    font-weight: 800;
+    letter-spacing: -1.8px;
+}
+
+.student-visual-content h1 span {
+    color: #a5b4fc;
+}
+
+.student-visual-content>p {
+    max-width: 450px;
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.student-feature-list {
+    margin-top: 45px;
+}
+
+.student-feature-list>div {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin: 19px 0;
+}
+
+.student-feature-list span {
+    color: #a5b4fc;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.student-feature-list p {
+    margin: 0;
+    color: #e2e8f0;
+    font-size: 14px;
+}
+
+.student-visual-footer {
+    position: relative;
+    z-index: 1;
+    color: #94a3b8;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* RIGHT FORM SECTION */
+
+.student-auth-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 7%;
+}
+
+.student-auth-form-container {
+    width: 100%;
+    max-width: 470px;
+}
+
+.student-mobile-brand {
+    display: none;
+}
+
+.student-auth-heading {
+    margin-bottom: 30px;
+}
+
+.student-auth-heading h2 {
+    margin: 13px 0 8px;
+    color: #111827;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.student-auth-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* INPUTS */
+
+.student-input-group {
+    min-width: 0;
+    margin-bottom: 19px;
+}
+
+.student-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.student-input-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #dbe1ea;
+    border-radius: 9px;
+    outline: none;
+    background: #ffffff;
+    color: #111827;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.student-input-group input::placeholder {
+    color: #9ca3af;
+}
+
+.student-input-group input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.student-input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* BUTTON */
+
+.student-primary-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    margin-top: 7px;
+    border: none;
+    border-radius: 9px;
+    background: #4f46e5;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.student-primary-button:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+.student-primary-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.student-primary-button span {
+    font-size: 19px;
+}
+
+/* ALERTS */
+
+.student-alert {
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.student-alert-error {
+    color: #b91c1c;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.student-alert-success {
+    color: #15803d;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+}
+
+/* FOOTER LINKS */
+
+.student-auth-switch {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 25px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.student-auth-switch a {
+    color: #4f46e5;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.student-auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.student-back-link {
+    display: block;
+    width: fit-content;
+    margin: 24px auto 0;
+    color: #64748b;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.student-back-link:hover {
+    color: #4f46e5;
+}
+
+.student-auth-note {
+    margin-top: 30px;
+    color: #9ca3af;
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .student-auth-page {
+        grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .student-auth-visual {
+        padding: 35px 7%;
+    }
+
+    .student-auth-form-section {
+        padding: 35px 5%;
+    }
+
+    .student-visual-content h1 {
+        font-size: 37px;
+    }
+}
+
+@media (max-width: 650px) {
+    .student-auth-page {
+        display: block;
+    }
+
+    .student-auth-visual {
+        display: none;
+    }
+
+    .student-auth-form-section {
+        min-height: 100vh;
+        box-sizing: border-box;
+        padding: 35px 22px;
+    }
+
+    .student-mobile-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 45px;
+        color: #111827;
+        font-size: 21px;
+        font-weight: 800;
+    }
+
+    .student-input-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .student-auth-heading h2 {
+        font-size: 26px;
+    }
+}
